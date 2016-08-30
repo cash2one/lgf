@@ -1,0 +1,266 @@
+@CHARSET "UTF-8";
+/* home_page */
+html{
+	background-color: #F8F8F8;
+}
+.carousel-label{
+	position: absolute;
+	top: 45%;
+}
+#content{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#fuwu{
+	border: 1px dashed gray;
+	margin-top: 5px;
+}
+#fuwu_1{
+	margin: 0 0;
+}
+#jishu{
+	border: 1px dashed gray;
+	margin-top: 5px;
+}
+#hangyeyanjiu{
+	border: 1px dashed gray;
+	margin-top: 5px;
+	margin-left:0;
+}
+#qiyeanli{
+	border: 1px dashed gray;
+	margin-top: 5px;
+}
+#page-homepage{
+	background-color: #F5F5F5;
+	width: 100%;
+}
+
+/* /home_page */
+
+
+/* header */
+#top{
+}
+#navbar{
+	margin-bottom: 5px;
+}
+#mailto{
+	position: absolute;
+	right: 200px;
+	font-family: "Times New Roman","Microsoft YaHei",LiSu;
+	font-size: 16px;
+	color: #9B0512;
+}
+#english{
+	color: #9B0512;
+	font-family: "Times New Roman","Microsoft YaHei",LiSu;
+	font-size: 16px;
+}
+#english p{
+	margin-bottom: 0;
+}
+#img_logo{
+	margin-top:-16px;
+	margin-left:10px;
+	max-width:200px;
+	max-height:100px
+}
+#caidan{
+	float: left;
+}
+#caidan ul li{
+	font-family: STKaiti,"Microsoft YaHei",LiSu;
+	font-size: 16px;
+	font-weight: bold;
+}
+#caidan ul li a p{
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav li a {
+  color: black;
+}
+#navbar-left{
+	border: none;
+	margin-bottom1: 0;
+	position: relative;
+}
+.navbar{
+	margin-bottom: 0;
+	background-color: #F5F5F5;
+}
+.guangfu_li{
+	width: 100px;
+}
+.guangfu_li p{
+}
+.our_contact{
+	height: 320px;
+}
+.page-right{
+	margin-left: 210px;
+	width: 5px;
+	height: 280px;
+	border-left: 1px solid #e5e5e5;
+}
+/* /header */
+
+
+/* footer */
+.gh-columns{
+	min-height: 240px;
+	position: relative;
+	top: 20px;
+}
+.gh-columns_ul{
+
+	margin: 0 auto;
+}
+.gh-columns_ul li p{
+	font-family: STKaiti,"Microsoft YaHei",LiSu;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 40px;
+}
+.gh-columns_ul li ul li a{
+	font-family: STKaiti,"Microsoft YaHei",LiSu;
+	font-size: 14px;
+	font-weight: normal;
+}
+.gh-footer{
+
+}
+.page-header-hi{
+	min-height: 5px;
+	margin-top: -50px;
+}
+
+.footer_ul{
+	max-width: 180px;
+	position: relative;
+	color: #DA261D;
+}
+.footer_ul ul{
+	list-style-type: none;
+}
+.footer_ul ul li a{
+	color: black;
+	font-family: "Times New Roman";
+}
+
+.footer_ul li{
+	color: white;
+}
+#footer{
+	position: relative;
+}
+#footer ul li a{
+	font-family: STKaiti,"Microsoft YaHei",LiSu;
+	font-size: 14px;
+	font-weight: normal;
+}
+#footer p{
+	font-family: STKaiti,"Microsoft YaHei",LiSu;
+	font-size: 14px;
+	font-weight: normal;	
+}
+#footer ul{
+	width: 334px;
+	margin: 0 auto;
+}
+/* /footer */
+
+
+
+
+/* guangfu_page */
+
+.p_guanfu{
+ 	text-indent:2em;
+}
+.p_guanfu_1{
+ 	text-indent:2em;
+ 	font-size:large;
+ 	line-height:2; 
+}
+#guangfujishu img{
+	position: relative;
+	width: 100%;
+}
+.jianjie_img{
+	position: relative;
+	width: 100%;
+}
+/* /guangfu_page */
+
+
+
+
+/* national_policy_page */
+
+.national_policy_list_pic{
+	padding: 15px 10px 15px 10px;
+}
+.national_policy_list_content{
+	margin: -120px 15px 0 120px;
+}
+
+.national_policy_list_title{
+	color: red;
+	font-weight: bold;
+}
+
+.national_policy_list_titlediv{
+	margin-top: 12px;
+}
+/* /national_policy_page */
+
+
+
+/* tech_adv_page */
+.tech_adv_list_pic{
+	padding: 15px 10px 15px 10px;
+}
+.tech_adv_list_content{
+	margin: -120px 15px 0 120px;
+}
+
+.tech_adv_list_title{
+	color: blue;
+	font-weight: bold;
+}
+
+.tech_adv_list_titlediv{
+	margin-top: 12px;
+}
+/* /tech_adv_page */
+
+
+
+/* successful_case_page */
+.successful_case_list_box{
+	height:180px;
+	overflow-y: hidden;
+}
+
+.successful_case_list_background{
+	height: 80px;
+	width: 260px;
+	margin-top: -80px;
+	background-color: #FFFFFF;
+	opacity: .5;
+}
+.successful_case_list_content{
+	width: 260px;
+	margin-top: -80px;
+	padding-left: 5px;
+	position: relative;
+}
+
+.successful_case_list_detail{
+	margin-top: -10px;
+	padding-top: 0;
+}
+/* /successful_case_page */
+
+
