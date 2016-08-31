@@ -1,0 +1,19 @@
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000001', 'Õë¼Á', '');
+
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000002', '½ºÄÒ', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000003', 'Æ¬¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000004', '·Û¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000005', 'µÎ¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000006', 'Ðü¸¡¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000007', 'ºÏ¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000008', 'Ë¨¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000009', '½ºÍè', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000010', '¿ÅÁ£', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000011', 'Äý½º', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000012', 'ÈÜÒº', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000013', 'Èí¸à', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000018', 'ÅçÎí¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000014', 'É¢¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000015', 'Ë®¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000016', 'Íè¼Á', '');
+INSERT INTO `ypfx`.`jixing` (`id`, `jixing_id`, `jixing_name`, `remarks`) VALUES (NULL, 'j00000017', 'Ï´¼Á', '');

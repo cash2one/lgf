@@ -1,0 +1,3 @@
+INSERT INTO `ypfx`.`drugs` (`id`, `class_id`, `drug_id`, `drug_name`, `shangpin_id`, `guige_id`, `guige_name`, `jixing_id`, `med_in_type_id`, `changjia_id`, `supplier_id`, `remarks`) VALUES (NULL, '0001', 'd00000001', '°¢ÄªÎ÷ÁÖ¿ÅÁ£', '000101', '00010101', '131j31', 'j00000001', 'm00000001', 'c00000001', 's00000001', '');
+
+INSERT INTO `ypfx`.`drugs` (`id`, `class_id`, `drug_id`, `drug_name`, `shangpin_id`, `guige_id`, `guige_name`, `jixing_id`, `med_in_type_id`, `changjia_id`, `supplier_id`, `remarks`) VALUES (NULL, '0002', 'd00000002', '°¢½º', '000201', '00020101', '131j31', 'j00000002', 'm00000002', 'c00000002', 's00000002', '');
