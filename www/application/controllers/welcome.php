@@ -29,8 +29,7 @@ class Welcome extends CI_Controller {
     }
 	public function index()
 	{
-            phpinfo();
-		//$this->load->view('test');
+            $this->load->view('muban/jilianxialakuang');
 	}
         
         public function pag(){

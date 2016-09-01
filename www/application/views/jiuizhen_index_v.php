@@ -13,8 +13,10 @@
 	<script type="text/javascript" src="<?php echo base_url().'js/modal.js'?>"></script>
 	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url().'js/dataone.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/jilianxialakuang.js'?>"></script>
         <script src="<?php echo base_url() . 'js/jquery.js' ?>"></script>
         <script type="text/javascript">
+            
             function changjia_id_gen() {
                 $.post("<?php echo base_url() . 'index.php/info_add/changjia_id_gen' ?>", {}, function(data) {
                     if (data.length > 0) {
@@ -65,52 +67,45 @@
                         <!--单位-->
                         <td><input type="text" /></td>
                         <!--初复诊-->
-                        <td><select>
-                                <option>初诊</option>
-                                <option>复诊</option>
+                        <td><select id="jiuzhen_parent" onchange="jiuzhen_clickOpt()">
+                                <option value="">请选择</option>
+                                <option value="1">初诊</option>
+                                <option value="2">复诊</option>
                             </select>
                         </td>
                         <!--流失-->
                         <td>
-                            <select>
-                                <option>初诊流失</option>
-                                <option>检查流失</option>
+                            <select id="jiuzhen_child">
+                                <option>请选择初复诊</option>
+                                <!--<option>初诊流失</option>-->
+                                <!--<option>检查流失</option>-->
                             </select>
                         </td>
                         <!--科室-->
                         <td>
-                            <select name="keshi">
-                                <option>内科</option>
-                                <option>外科</option>
-                                <option>男科</option>
-                                <option>妇科</option>
-                                <option>产科</option>
-                                <option>耳鼻喉</option>
-                                <option>疼痛科</option>
-                                <option>中医</option>
-                                <option>其他</option>
+                            <select name="keshi" id="keshi_parent" onchange="keshi_clickOpt()">
+                                <option value="">请选择</option>
+                                <option value="1">内科</option>
+                                <option value="2">外科</option>
+                                <option value="3">男科</option>
+                                <option value="4">妇科</option>
+                                <option value="5">产科</option>
+                                <option value="6">耳鼻喉</option>
+                                <option value="7">疼痛科</option>
+                                <option value="8">中医</option>
+                                <option value="9">其他</option>
                             </select>
                         </td>
                         <!--诊室-->
                         <td>
-                            <select>
-                                <option>一诊室</option>
-                                <option>二诊室</option>
-                                <option>三诊室</option>
+                            <select id="keshi_child1">
+                                <option>请选择科室</option>
                             </select>
                         </td>
                         <!--病种-->
                         <td>
-                            <select>
-                                <option>感冒</option>
-                                <option>胃炎</option>
-                                <option>支气管炎</option>
-                                <option>冠/肺心病</option>
-                                <option>三高</option>
-                                <option>糖尿病</option>
-                                <option>腹泻</option>
-                                <option>脑A/硬化供血不足</option>
-                                <option>其他</option>
+                            <select id="keshi_child2">
+                                <option>请选择科室</option>
                             </select>
                         </td>
                         <!--来源渠道-->

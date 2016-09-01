@@ -23,7 +23,7 @@
   var s_tiannet_select = "width:64px;display:none;";
   //月、时、分选择下拉框
   var s_tiannet_select2 = "width:46px;display:none;";
-  //日期选择控件体的样式
+  //日期选择控件体的样式2650A6
   var s_tiannet_body = "width:150;background-color:#2650A6;display:none;z-index:9998;position:absolute;" +
    "border-left:1 solid #CCCCCC;border-top:1 solid #CCCCCC;border-right:1 solid #999999;border-bottom:1 solid #999999;";
   //显示日的td的样式
@@ -36,9 +36,10 @@
   var s_tiannet_line = "border-bottom:1 solid #6699CC";
   //------------------ 变量定义 ---------------------------//
   var tiannetYearSt = 1950;//可选择的开始年份
-  var tiannetYearEnd = 2010;//可选择的结束年份
+  var tiannetYearEnd = 2030;//可选择的结束年份
   var tiannetDateNow = new Date();
   var tiannetYear = tiannetDateNow.getFullYear(); //定义年的变量的初始值
+  
   var tiannetMonth = tiannetDateNow.getMonth()+1; //定义月的变量的初始值
   var tiannetDay = tiannetDateNow.getDate();
   var tiannetHour = 8;//tiannetDateNow.getHours();
@@ -578,10 +579,10 @@
   if (tagName !== "INPUT" && getAttribute("Author") !== "tiannet")
   tiannetHideControl();
    }
-  }
+  };
   //按ESC键关闭该控件
   document.onkeypress=function(){
   if( event.keyCode === 27 ){
    tiannetHideControl();
   }
-  }
+  };
