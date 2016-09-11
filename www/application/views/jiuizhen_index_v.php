@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta content="MSHTML 6.00.6000.16674" name="GENERATOR" />
 
-        <title>药品剂型录入</title>
+        <title>患者信息录入</title>
 
         <link href="<?php echo base_url() . '/css/User_Login1.css' ?>" type="text/css" rel="stylesheet" />
         <link href="<?php echo base_url().'css/bootstrap.min.css'?>" rel="stylesheet" media="screen">
@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="<?php echo base_url().'js/modal.js'?>"></script>
 	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url().'js/dataone.js'?>"></script>
-        <script type="text/javascript" src="<?php echo base_url().'js/jilianxialakuang.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/lgf.js'?>"></script>
         <script src="<?php echo base_url() . 'js/jquery.js' ?>"></script>
         <script type="text/javascript">
             
@@ -30,7 +30,7 @@
         
     </head>
     <body id="userlogin_body">
-        <form name="subform_changjia" action="<?php echo base_url() . 'index.php/info_add/changjia_add' ?>" method="post">
+        <form name="subform_changjia" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post">
             <table>
                 <tr>
                     <td>日期：</td>
@@ -41,7 +41,7 @@
             <input type="submit" size="17" name="submit" value="提交"/>
             <!--<td><input type="reset" size="17" name="reset" value="重置"/></td>-->
             
-            <table class="table">
+            <table class="table" id="tb">
                 <thead>
                     <tr>
                         <th>单位</th>
@@ -67,7 +67,7 @@
                         <!--单位-->
                         <td><input type="text" /></td>
                         <!--初复诊-->
-                        <td><select id="jiuzhen_parent" onchange="jiuzhen_clickOpt()">
+                        <td><select id="jiuzhen_parent0" name="jiuzhen_parent0" onchange="jiuzhen_clickOpt(this.id)">
                                 <option value="">请选择</option>
                                 <option value="1">初诊</option>
                                 <option value="2">复诊</option>
@@ -75,15 +75,13 @@
                         </td>
                         <!--流失-->
                         <td>
-                            <select id="jiuzhen_child">
+                            <select id="jiuzhen_child0">
                                 <option>请选择初复诊</option>
-                                <!--<option>初诊流失</option>-->
-                                <!--<option>检查流失</option>-->
                             </select>
                         </td>
                         <!--科室-->
                         <td>
-                            <select name="keshi" id="keshi_parent" onchange="keshi_clickOpt()">
+                            <select name="keshi" id="keshi_parent0" onchange="keshi_clickOpt(this.id)">
                                 <option value="">请选择</option>
                                 <option value="1">内科</option>
                                 <option value="2">外科</option>
@@ -98,13 +96,13 @@
                         </td>
                         <!--诊室-->
                         <td>
-                            <select id="keshi_child1">
+                            <select id="zhenshi_child0">
                                 <option>请选择科室</option>
                             </select>
                         </td>
                         <!--病种-->
                         <td>
-                            <select id="keshi_child2">
+                            <select id="bingzhong_child0">
                                 <option>请选择科室</option>
                             </select>
                         </td>
@@ -169,6 +167,8 @@
                     
                 </tbody>
             </table>
+            <input type="button" name="Submit" value=" - " onClick="delrow();">
+            <input type="button" name="Submit" value=" + " onClick="addrow();">
         </form>
     </body>
 </html>

@@ -27,9 +27,14 @@ class Welcome extends CI_Controller {
         $this->load->library('pagination');
         
     }
-	public function index()
+    public function index()
 	{
-            $this->load->view('muban/jilianxialakuang');
+            $this->load->view('muban/dongtaibiaoge');
+	}
+	public function dongtaibiaoge()
+	{
+            echo 1;
+            $this->load->view('muban/dongtaibiaoge');
 	}
         
         public function pag(){

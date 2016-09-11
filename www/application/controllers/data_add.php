@@ -28,17 +28,18 @@ class Data_add extends CI_Controller {
     }
 
     public function jiuzhen_add() {
-        $data['class_info'] = $this->info_add_m->class_info_select();
-        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
-        $data['guige'] = $this->info_add_m->guige_select();
-        $data['jixing'] = $this->info_add_m->jixing_select();
-        $data['med_in_type'] = $this->info_add_m->med_in_type_select();
-        $data['changjia'] = $this->info_add_m->changjia_select();
+        echo $_POST['jiuzhen_parent0'];
+//        $data['class_info'] = $this->info_add_m->class_info_select();
+//        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
+//        $data['guige'] = $this->info_add_m->guige_select();
+//        $data['jixing'] = $this->info_add_m->jixing_select();
+//        $data['med_in_type'] = $this->info_add_m->med_in_type_select();
+//        $data['changjia'] = $this->info_add_m->changjia_select();
 //        $data['supplier'] = $this->drug_purchase_m->supplier_select();
 //        var_dump($data);
-        $this->load->view('drug_property_add_v', $data);
+//        $this->load->view('drug_property_add_v', $data);
     }
-
+    
 }
 
 /* End of file welcome.php */
