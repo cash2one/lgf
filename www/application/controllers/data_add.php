@@ -1,4 +1,4 @@
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
 
 if (!defined('BASEPATH'))
@@ -28,7 +28,7 @@ class Data_add extends CI_Controller {
     }
 
     public function jiuzhen_add() {
-        echo $_POST['jiuzhen_parent0'];
+        var_dump($this->input->post(NULL,TRUE));
 //        $data['class_info'] = $this->info_add_m->class_info_select();
 //        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
 //        $data['guige'] = $this->info_add_m->guige_select();

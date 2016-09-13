@@ -64,8 +64,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!--单位-->
-                        <td><input type="text" /></td>
+                        <!--医院-->
+                        <td><input type="text" name="yiyuan0"/></td>
                         <!--初复诊-->
                         <td><select id="jiuzhen_parent0" name="jiuzhen_parent0" onchange="jiuzhen_clickOpt(this.id)">
                                 <option value="">请选择</option>
@@ -75,13 +75,13 @@
                         </td>
                         <!--流失-->
                         <td>
-                            <select id="jiuzhen_child0">
+                            <select id="jiuzhen_child0" name="jiuzhen_child0">
                                 <option>请选择初复诊</option>
                             </select>
                         </td>
                         <!--科室-->
                         <td>
-                            <select name="keshi" id="keshi_parent0" onchange="keshi_clickOpt(this.id)">
+                            <select name="keshi_parent0" id="keshi_parent0" onchange="keshi_clickOpt(this.id)">
                                 <option value="">请选择</option>
                                 <option value="1">内科</option>
                                 <option value="2">外科</option>
@@ -96,19 +96,19 @@
                         </td>
                         <!--诊室-->
                         <td>
-                            <select id="zhenshi_child0">
+                            <select id="zhenshi_child0" name="zhenshi_child0">
                                 <option>请选择科室</option>
                             </select>
                         </td>
                         <!--病种-->
                         <td>
-                            <select id="bingzhong_child0">
+                            <select id="bingzhong_child0" name="bingzhong_child0">
                                 <option>请选择科室</option>
                             </select>
                         </td>
                         <!--来源渠道-->
                         <td>
-                            <select>
+                            <select nane="laiyuanqudao0" id="laiyuanqudao0">
                                 <option>网络</option>
                                 <option>电话</option>
                                 <option>QQ</option>
@@ -123,17 +123,17 @@
                             </select>
                         </td>
                         <!--年龄-->
-                        <td><input type="text" size="4"/></td>
+                        <td><input type="text" size="4" name="nianling0" id="nianling0"/></td>
                         <!--性别-->
                         <td>
-                            <select>
+                            <select name="xingbie0" id="xingbie0">
                                 <option>男</option>
                                 <option>女</option>
                             </select>
                         </td>
                         <!--区域-->
                         <td>
-                            <select>
+                            <select name="quyu0" id="quyu0">
                                 <option>县城</option>
                                 <option>广顺</option>
                                 <option>杜家坝</option>
@@ -141,27 +141,31 @@
                         </td>
                         <!--是否收住院-->
                         <td>
-                            <select>
+                            <select name="shouzhuyuan0" id="shouzhuyuan0">
                                 <option>是</option>
                                 <option selected="selected">否</option>
                             </select>
                         </td>
                         <!--是否治疗-->
                         <td>
-                            <select>
+                            <select name="zhiliao0" id="zhiliao0">
                                 <option>是</option>
                                 <option selected="selected">否</option>
                             </select>
                         </td>
-                        <td><input type="text" size="8"/></td>
+                        <!--治疗费-->
+                        <td><input type="text" size="8" name="zhilioafei0" id="zhilioafei0"/></td>
+                        <!--是否手术-->
                         <td>
-                            <select>
+                            <select name="shoushu0" id="shoushu0">
                                 <option>是</option>
                                 <option selected="selected">否</option>
                             </select>
                         </td>
-                        <td><input type="text" size="8" /></td>
-                        <td><input type="text" size="8" /></td>
+                        <!--手术费-->
+                        <td><input type="text" size="8" name="shoushufei0" id="shoushufei0"/></td>
+                        <!--门诊消费-->
+                        <td><input type="text" size="8" name="menzhenxiaofei0" id="menzhenxiaofei0"/></td>
                         
                     </tr>
                     
