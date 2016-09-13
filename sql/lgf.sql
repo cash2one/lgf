@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-09-11 17:46:04
+-- Generation Time: 2016-09-13 18:23:40
 -- 服务器版本： 5.5.39
 -- PHP Version: 5.4.31
 
@@ -28,27 +28,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `patients` (
 `id` int(11) NOT NULL COMMENT 'id',
-  `name` varchar(20) DEFAULT NULL COMMENT '姓名',
-  `office` varchar(10) DEFAULT NULL COMMENT '科室',
-  `disease` varchar(20) DEFAULT NULL COMMENT '病种',
-  `registered_type` varchar(20) DEFAULT NULL COMMENT '挂号类型',
-  `age` int(11) NOT NULL COMMENT '年龄',
-  `source` varchar(20) NOT NULL COMMENT '渠道',
-  `region` varchar(30) NOT NULL COMMENT '来源地区',
-  `year` datetime NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- 转存表中的数据 `patients`
---
-
-INSERT INTO `patients` (`id`, `name`, `office`, `disease`, `registered_type`, `age`, `source`, `region`, `year`) VALUES
-(1, '病人1', '妇科', '早孕', '挂号', 21, '网络', '县城', '2016-01-01 00:00:00'),
-(2, '病人1', '妇科', '早孕', '挂号', 21, '网络', '县城', '2016-08-10 00:00:00'),
-(3, '病人2', '外科', '骨科', '挂号', 29, '电话', '广顺', '2016-07-07 00:00:00'),
-(4, '病人1', '妇科', '早孕', '初诊', 21, '网络', '县城', '2015-12-17 00:00:00'),
-(5, '病人1', '妇科', '早孕', '复诊', 21, '网络', '县城', '2016-05-16 00:00:00'),
-(6, '病人5', '妇科', '妇检', '挂号', 21, '网络', '县城', '2016-08-04 00:00:00');
+  `yiyuan` varchar(20) DEFAULT NULL,
+  `chufuzhen` tinyint(1) DEFAULT NULL,
+  `liushi` varchar(20) DEFAULT NULL,
+  `keshi` varchar(20) DEFAULT NULL,
+  `zhenshi` varchar(20) DEFAULT NULL,
+  `laiyuanqudao` varchar(20) DEFAULT NULL,
+  `nianling` int(11) DEFAULT NULL,
+  `xingbie` tinyint(1) DEFAULT NULL,
+  `quyu` varchar(30) DEFAULT NULL,
+  `shouzhuyuan` tinyint(1) DEFAULT NULL,
+  `zhiliao` tinyint(1) DEFAULT NULL,
+  `zhiliaofei` double DEFAULT NULL,
+  `shoushu` tinyint(1) DEFAULT NULL,
+  `shoushufei` double DEFAULT NULL,
+  `meizhenxiaofei` double DEFAULT NULL,
+  `beizhu` varchar(100) DEFAULT NULL,
+  `riqi` date DEFAULT NULL,
+  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -102,7 +100,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id';
 --
 -- AUTO_INCREMENT for table `users`
 --
