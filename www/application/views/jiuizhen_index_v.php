@@ -24,17 +24,34 @@
                         $('#changjia_id').html(data);
                     } else
                         return false;
-                })
+                });
+            }
+            
+            function validation(form){
+                var txt_nianling = $.trim($("#nianling0").attr("value"));
+                alert(txt_nianling);
+                if(txt_nianling==0)
+                {
+                        alert("年龄不能为空！");
+                        return false;
+                }else if(isNaN(parseInt(txt_nianling)))
+                {
+                        alert("年龄必须为数字！");
+                        return false;
+                }
+                else{
+                    document.jiuzhen.submit();
+                }
             }
         </script>
         
     </head>
     <body id="userlogin_body">
-        <form name="subform_changjia" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post">
+        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post" >
             <table>
                 <tr>
                     <td>日期：</td>
-                    <td><input type="text" name="date"  readOnly onClick="setDay(this);"/></td>
+                    <td><input type="text" name="date"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
                 </tr>
             </table>
             
@@ -65,24 +82,26 @@
                 <tbody>
                     <tr>
                         <!--医院-->
-                        <td><input type="text" name="yiyuan0"/></td>
+                        <td><input type="text" name="yiyuan0" readonly="readonly" value="<?php echo $yiyuan ?>"/></td>
                         <!--初复诊-->
-                        <td><select id="jiuzhen_parent0" name="jiuzhen_parent0" onchange="jiuzhen_clickOpt(this.id)">
-                                <option value="">请选择</option>
+                        <td><select id="jiuzhen_parent0" name="chufuzhen0" onchange="jiuzhen_clickOpt(this.id)">
+                                <!--<option value="">请选择</option>-->
                                 <option value="1">初诊</option>
                                 <option value="2">复诊</option>
                             </select>
                         </td>
                         <!--流失-->
                         <td>
-                            <select id="jiuzhen_child0" name="jiuzhen_child0">
-                                <option>请选择初复诊</option>
+                            <select id="jiuzhen_child0" name="liushi0">
+                                <option value="0"></option>
+                                <option value="1">初诊流失</option>
+                                <option value="2">复诊流失</option>
                             </select>
                         </td>
                         <!--科室-->
                         <td>
-                            <select name="keshi_parent0" id="keshi_parent0" onchange="keshi_clickOpt(this.id)">
-                                <option value="">请选择</option>
+                            <select name="keshi0" id="keshi_parent0" onchange="keshi_clickOpt(this.id)">
+<!--                                <option value="">请选择</option>-->
                                 <option value="1">内科</option>
                                 <option value="2">外科</option>
                                 <option value="3">男科</option>
@@ -96,83 +115,93 @@
                         </td>
                         <!--诊室-->
                         <td>
-                            <select id="zhenshi_child0" name="zhenshi_child0">
-                                <option>请选择科室</option>
+                            <select id="zhenshi_child0" name="zhenshi0">
+                                <option></option>
                             </select>
                         </td>
                         <!--病种-->
                         <td>
-                            <select id="bingzhong_child0" name="bingzhong_child0">
-                                <option>请选择科室</option>
+                            <select id="bingzhong_child0" name="bingzhong0">
+                                <!--<option>请选择科室</option>-->
+                                <option value="1">感冒</option>
+                                <option value="2">胃炎</option>
+                                <option value="3">支气管炎</option>
+                                <option value="4">冠/肺心病</option>
+                                <option value="5">三高</option>
+                                <option value="6">糖尿病</option>
+                                <option value="7">腹泻</option>
+                                <option value="8">脑A/硬化供血不足</option>
+                                <option value="9">其他</option>
+                                <option value="10">体检</option>
                             </select>
                         </td>
                         <!--来源渠道-->
                         <td>
-                            <select nane="laiyuanqudao0" id="laiyuanqudao0">
-                                <option>网络</option>
-                                <option>电话</option>
-                                <option>QQ</option>
-                                <option>杂志</option>
-                                <option>市场</option>
-                                <option>持卡</option>
-                                <option>路过</option>
-                                <option>附近</option>
-                                <option>介绍</option>
-                                <option>来过</option>
-                                <option>会员证</option>
+                            <select name="laiyuanqudao0" id="laiyuanqudao0">
+                                <option value="0">网络</option>
+                                <option value="1">电话</option>
+                                <option value="2">QQ</option>
+                                <option value="3">杂志</option>
+                                <option value="4">市场</option>
+                                <option value="5">持卡</option>
+                                <option value="6">路过</option>
+                                <option value="7">附近</option>
+                                <option value="8">介绍</option>
+                                <option value="9">来过</option>
+                                <option value="10">会员证</option>
                             </select>
                         </td>
                         <!--年龄-->
-                        <td><input type="text" size="4" name="nianling0" id="nianling0"/></td>
+                        <td><input type="text" size="4" name="nianling0" id="nianling0" value="0"/></td>
                         <!--性别-->
                         <td>
                             <select name="xingbie0" id="xingbie0">
-                                <option>男</option>
-                                <option>女</option>
+                                <option value="0">男</option>
+                                <option value="1" selected>女</option>
                             </select>
                         </td>
                         <!--区域-->
                         <td>
                             <select name="quyu0" id="quyu0">
-                                <option>县城</option>
-                                <option>广顺</option>
-                                <option>杜家坝</option>
+                                <option value="0">县城</option>
+                                <option value="1">广顺</option>
+                                <option value="2">杜家坝</option>
                             </select>
                         </td>
                         <!--是否收住院-->
                         <td>
                             <select name="shouzhuyuan0" id="shouzhuyuan0">
-                                <option>是</option>
-                                <option selected="selected">否</option>
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
                             </select>
                         </td>
                         <!--是否治疗-->
                         <td>
                             <select name="zhiliao0" id="zhiliao0">
-                                <option>是</option>
-                                <option selected="selected">否</option>
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
                             </select>
                         </td>
                         <!--治疗费-->
-                        <td><input type="text" size="8" name="zhilioafei0" id="zhilioafei0"/></td>
+                        <td><input type="text" size="8" name="zhiliaofei0" id="zhiliaofei0" value="0"/></td>
                         <!--是否手术-->
                         <td>
                             <select name="shoushu0" id="shoushu0">
-                                <option>是</option>
-                                <option selected="selected">否</option>
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
                             </select>
                         </td>
                         <!--手术费-->
-                        <td><input type="text" size="8" name="shoushufei0" id="shoushufei0"/></td>
+                        <td><input type="text" size="8" name="shoushufei0" id="shoushufei0" value="0"/></td>
                         <!--门诊消费-->
-                        <td><input type="text" size="8" name="menzhenxiaofei0" id="menzhenxiaofei0"/></td>
+                        <td><input type="text" size="8" name="menzhenxiaofei0" id="menzhenxiaofei0" value="0"/></td>
                         
                     </tr>
                     
                 </tbody>
             </table>
-            <input type="button" name="Submit" value=" - " onClick="delrow();">
-            <input type="button" name="Submit" value=" + " onClick="addrow();">
+            <input type="button" name="del" value=" - " onClick="delrow();">
+            <input type="button" name="add" value=" + " onClick="addrow('<?php echo $yiyuan?>');">
         </form>
     </body>
 </html>

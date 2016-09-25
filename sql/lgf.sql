@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-09-13 18:23:40
+-- Generation Time: 2016-09-25 17:01:52
 -- 服务器版本： 5.5.39
 -- PHP Version: 5.4.31
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `patients` (
 `id` int(11) NOT NULL COMMENT 'id',
   `yiyuan` varchar(20) DEFAULT NULL,
-  `chufuzhen` tinyint(1) DEFAULT NULL,
+  `chufuzhen` varchar(20) DEFAULT NULL,
   `liushi` varchar(20) DEFAULT NULL,
   `keshi` varchar(20) DEFAULT NULL,
   `zhenshi` varchar(20) DEFAULT NULL,
+  `bingzhong` varchar(20) NOT NULL,
   `laiyuanqudao` varchar(20) DEFAULT NULL,
   `nianling` int(11) DEFAULT NULL,
   `xingbie` tinyint(1) DEFAULT NULL,
@@ -42,11 +43,66 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `zhiliaofei` double DEFAULT NULL,
   `shoushu` tinyint(1) DEFAULT NULL,
   `shoushufei` double DEFAULT NULL,
-  `meizhenxiaofei` double DEFAULT NULL,
+  `menzhenxiaofei` double DEFAULT NULL,
   `beizhu` varchar(100) DEFAULT NULL,
   `riqi` date DEFAULT NULL,
   `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- 转存表中的数据 `patients`
+--
+
+INSERT INTO `patients` (`id`, `yiyuan`, `chufuzhen`, `liushi`, `keshi`, `zhenshi`, `bingzhong`, `laiyuanqudao`, `nianling`, `xingbie`, `quyu`, `shouzhuyuan`, `zhiliao`, `zhiliaofei`, `shoushu`, `shoushufei`, `menzhenxiaofei`, `beizhu`, `riqi`, `time`) VALUES
+(1, '重庆荣昌仁爱医院', '1', '0', '1', '100', '0', '网络', 21, 0, '县城', 0, 0, NULL, 0, 0, 2016, NULL, NULL, '2016-09-23 15:47:46'),
+(2, '重庆荣昌仁爱医院', '1', '0', '1', '100', '0', '网络', 21, 0, '县城', 0, 0, NULL, 0, 0, 2016, NULL, NULL, '2016-09-23 15:48:24'),
+(3, '重庆荣昌仁爱医院', '0', '', '内科', '', '糖尿病', '网络', 25, 0, '县城', 0, 0, 0, 0, 0, 2016, NULL, NULL, '2016-09-23 16:18:01'),
+(4, '重庆荣昌仁爱医院', '0', '', '妇科', '一诊室', '0', '网络', 21, 0, '县城', 0, 0, 0, 0, 0, 2016, NULL, NULL, '2016-09-23 16:18:43'),
+(5, '重庆荣昌仁爱医院', '0', '', '产科', '', '晚孕', '网络', 27, 0, '县城', 0, 0, 0, 0, 0, 2016, NULL, NULL, '2016-09-23 16:32:01'),
+(6, '重庆荣昌仁爱医院', '初诊', '', '产科', '', '晚孕', '网络', 27, 0, '县城', 0, 0, 0, 0, 0, 2016, NULL, NULL, '2016-09-23 16:33:48'),
+(7, '重庆荣昌仁爱医院', '初诊', '', '产科', '', '晚孕', '网络', 27, 0, '县城', 0, 0, 0, 0, 0, 0, NULL, '2016-09-24', '2016-09-23 16:35:10');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `patients_ic`
+--
+
+CREATE TABLE IF NOT EXISTS `patients_ic` (
+`id` int(11) NOT NULL COMMENT 'id',
+  `yiyuan` varchar(20) DEFAULT NULL,
+  `chufuzhen` varchar(20) DEFAULT NULL,
+  `liushi` varchar(20) DEFAULT NULL,
+  `keshi` varchar(20) DEFAULT NULL,
+  `zhenshi` varchar(20) DEFAULT NULL,
+  `bingzhong` varchar(20) NOT NULL,
+  `laiyuanqudao` varchar(20) DEFAULT NULL,
+  `nianling` int(11) DEFAULT NULL,
+  `xingbie` tinyint(1) DEFAULT NULL,
+  `quyu` varchar(30) DEFAULT NULL,
+  `shouzhuyuan` tinyint(1) DEFAULT NULL,
+  `zhiliao` tinyint(1) DEFAULT NULL,
+  `zhiliaofei` double DEFAULT NULL,
+  `shoushu` tinyint(1) DEFAULT NULL,
+  `shoushufei` double DEFAULT NULL,
+  `menzhenxiaofei` double DEFAULT NULL,
+  `beizhu` varchar(100) DEFAULT NULL,
+  `riqi` date DEFAULT NULL,
+  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+
+--
+-- 转存表中的数据 `patients_ic`
+--
+
+INSERT INTO `patients_ic` (`id`, `yiyuan`, `chufuzhen`, `liushi`, `keshi`, `zhenshi`, `bingzhong`, `laiyuanqudao`, `nianling`, `xingbie`, `quyu`, `shouzhuyuan`, `zhiliao`, `zhiliaofei`, `shoushu`, `shoushufei`, `menzhenxiaofei`, `beizhu`, `riqi`, `time`) VALUES
+(26, '荣昌仁爱医院', '复诊', '', '', '', '请选择科室', '0', 0, 0, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-24 18:46:58'),
+(27, '荣昌仁爱医院', '复诊', '', '', '', '请选择科室', '0', 0, 0, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-24 18:48:45'),
+(28, '荣昌仁爱医院', '复诊', '', '', '', '请选择科室', '0', 0, 0, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-24 18:50:51'),
+(29, '', '复诊', '', '', '', '请选择科室', '0', 0, 0, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-24 18:55:18'),
+(30, '荣昌仁爱医院', '初诊', '', '内科', '', '胃炎', '0', 0, 1, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-25 10:01:05'),
+(31, '荣昌仁爱医院', '初诊', '', '内科', '', '胃炎', '0', 0, 1, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-25 10:01:38'),
+(32, '荣昌仁爱医院', '初诊', '', '内科', '', '胃炎', '0', 0, 1, '0', 0, 0, 0, 0, 0, 0, NULL, '0000-00-00', '2016-09-25 10:01:43');
 
 -- --------------------------------------------------------
 
@@ -87,6 +143,12 @@ ALTER TABLE `patients`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `patients_ic`
+--
+ALTER TABLE `patients_ic`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -100,7 +162,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id';
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `patients_ic`
+--
+ALTER TABLE `patients_ic`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `users`
 --

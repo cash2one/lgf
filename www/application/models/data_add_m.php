@@ -7,16 +7,14 @@ class data_add_m extends CI_Model {
         $this->load->database();
     }
 
-    function class_info_select() {
-        $this->db->select('*');
-        $query = $this->db->get('class_info');
-        return $query->result();
+    function patients_info_insert($arr) {
+        $this->db->insert_batch('patients_ic', $arr);
     }
     
-    function shangpin_info_select() {
+    function patients_info_select() {
         $this->db->select('*');
-        $this->db->like('shangpin_id','0001' , 'after');
-        $query = $this->db->get('shangpin_info');
+//        $this->db->like('shangpin_id','0001' , 'after');
+        $query = $this->db->get('patients_ic');
         return $query->result();
     }
     

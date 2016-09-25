@@ -63,6 +63,11 @@ class Login extends CI_Controller {
             $username_v=$username_value->username;
         }
         $_SESSION['username']=$username_v;
+        $company=$this->sys_manager_m->company_select($_SESSION['userid']);
+        foreach ($company as $key_company => $company_value) {
+            $company_v=$company_value->company;
+        }
+        $_SESSION['company']=$company_v;
         $data['userid']=$_SESSION['userid'];
         $this->form_validation->set_rules('userid','用户名','required|callback_username_check');
         $this->form_validation->set_rules('password','密码','required|callback_password_check');

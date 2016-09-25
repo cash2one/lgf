@@ -40,9 +40,17 @@ class Sys_manager_m extends CI_Model{
 		return $query->result();
 	}
         
-        function company_select(){
-		$this->db->select('*');
-		$query=$this->db->get('company');
+//        function company_select(){
+//                $this->db->like('userid',$UserId);
+//		$this->db->select('company');
+//		$query=$this->db->get('company');
+//		return $query->result();
+//	}
+        
+        function company_select($UserId){
+                $this->db->like('userid',$UserId);
+		$this->db->select('company');
+		$query=$this->db->get('users');
 		return $query->result();
 	}
 
