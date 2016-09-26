@@ -28,7 +28,14 @@ class Data_add extends CI_Controller {
     }
 
     public function jiuzhen_add() {
-        var_dump($this->input->post(NULL,TRUE));
+//        var_dump($this->input->post(NULL,TRUE));
+        $jiuzhen=$this->input->post(NULL,TRUE);
+        var_dump($jiuzhen);
+        echo $jiuzhen['date'];
+        foreach ($jiuzhen as $key => $value) {
+            echo $value ;
+            echo '<br>';
+        }
 //        $data['class_info'] = $this->info_add_m->class_info_select();
 //        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
 //        $data['guige'] = $this->info_add_m->guige_select();

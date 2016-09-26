@@ -178,7 +178,7 @@ var tr = document.createElement('tr');
         tr.appendChild(td6);
 
         td7 = document.createElement('td');
-        td7.innerHTML = '<select nane="laiyuanqudao'+i+'" id="laiyuanqudao'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
+        td7.innerHTML = '<select name="laiyuan'+i+'" id="laiyuan'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
         tr.appendChild(td7);
 
         td8 = document.createElement('td');

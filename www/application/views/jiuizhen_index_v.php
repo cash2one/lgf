@@ -108,7 +108,7 @@
                         </td>
                         <!--来源渠道-->
                         <td>
-                            <select nane="laiyuanqudao0" id="laiyuanqudao0">
+                            <select id="laiyuan0" name="laiyuan0">
                                 <option>网络</option>
                                 <option>电话</option>
                                 <option>QQ</option>
