@@ -31,6 +31,7 @@ class Data_add extends CI_Controller {
     }
 
     public function jiuzhen_add() {
+<<<<<<< HEAD
         var_dump($this->input->post(NULL,TRUE));
         $patients=$this->input->post(NULL,TRUE);
         $len=count($patients);
@@ -181,6 +182,23 @@ class Data_add extends CI_Controller {
 //        var_dump($arr);
         
 //        $data=$this->data_add_m->patients_info_select();
+=======
+//        var_dump($this->input->post(NULL,TRUE));
+        $jiuzhen=$this->input->post(NULL,TRUE);
+        var_dump($jiuzhen);
+        echo $jiuzhen['date'];
+        foreach ($jiuzhen as $key => $value) {
+            echo $value ;
+            echo '<br>';
+        }
+//        $data['class_info'] = $this->info_add_m->class_info_select();
+//        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
+//        $data['guige'] = $this->info_add_m->guige_select();
+//        $data['jixing'] = $this->info_add_m->jixing_select();
+//        $data['med_in_type'] = $this->info_add_m->med_in_type_select();
+//        $data['changjia'] = $this->info_add_m->changjia_select();
+//        $data['supplier'] = $this->drug_purchase_m->supplier_select();
+>>>>>>> 98aa339470148dcdc4a31722d3e1f86b4a03b367
 //        var_dump($data);
         $patients_ic=$this->db->query('select * from patients_ic');
         
