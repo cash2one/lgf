@@ -260,6 +260,10 @@ class Data_add extends CI_Controller {
         
     }
     
+    public function shouru_every(){
+        $this->load->view('shouru_every_v');
+    }
+    
 }
 
 /* End of file welcome.php */
