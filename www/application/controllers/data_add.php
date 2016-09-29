@@ -31,8 +31,8 @@ class Data_add extends CI_Controller {
     }
 
     public function jiuzhen_add() {
-<<<<<<< HEAD
-        var_dump($this->input->post(NULL,TRUE));
+
+//        var_dump($this->input->post(NULL,TRUE));
         $patients=$this->input->post(NULL,TRUE);
         $len=count($patients);
 //        echo $arr0['date']=$patents['date'];
@@ -166,15 +166,38 @@ class Data_add extends CI_Controller {
             else if($arr[$i]['keshi']==7){$arr[$i]['keshi']='疼痛科';}
             else if($arr[$i]['keshi']==8){$arr[$i]['keshi']='中医';}
             else if($arr[$i]['keshi']==9){$arr[$i]['keshi']='其他';}
-            else{$arr[$i]['liushi']='';}
+            else{$arr[$i]['keshi']='';}
             $arr[$i]['laiyuanqudao']=$patients['laiyuanqudao'.$i];
+            if($arr[$i]['laiyuanqudao']==0){$arr[$i]['laiyuanqudao']='网络';}
+            else if($arr[$i]['laiyuanqudao']==1){$arr[$i]['laiyuanqudao']='电话';}
+            else if($arr[$i]['laiyuanqudao']==2){$arr[$i]['laiyuanqudao']='QQ';}
+            else if($arr[$i]['laiyuanqudao']==3){$arr[$i]['laiyuanqudao']='杂志';}
+            else if($arr[$i]['laiyuanqudao']==4){$arr[$i]['laiyuanqudao']='市场';}
+            else if($arr[$i]['laiyuanqudao']==5){$arr[$i]['laiyuanqudao']='持卡';}
+            else if($arr[$i]['laiyuanqudao']==6){$arr[$i]['laiyuanqudao']='路过';}
+            else if($arr[$i]['laiyuanqudao']==7){$arr[$i]['laiyuanqudao']='附近';}
+            else if($arr[$i]['laiyuanqudao']==8){$arr[$i]['laiyuanqudao']='介绍';}
+            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='来过';}
+            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='会员证';}
+            else{$arr[$i]['laiyuanqudao']='';}
             $arr[$i]['nianling']=$patients['nianling'.$i];
             $arr[$i]['xingbie']=$patients['xingbie'.$i];
+            if($arr[$i]['xingbie']==0){$arr[$i]['xingbie']='男';}
+            else if($arr[$i]['xingbie']==1){$arr[$i]['xingbie']='女';}
             $arr[$i]['quyu']=$patients['quyu'.$i];
+            if($arr[$i]['quyu']==0){$arr[$i]['quyu']='县城';}
+            else if($arr[$i]['quyu']==1){$arr[$i]['quyu']='广顺';}
+            else if($arr[$i]['quyu']==1){$arr[$i]['quyu']='杜家坝';}
             $arr[$i]['shouzhuyuan']=$patients['shouzhuyuan'.$i];
+            if($arr[$i]['shouzhuyuan']==0){$arr[$i]['shouzhuyuan']='否';}
+            else if($arr[$i]['shouzhuyuan']==1){$arr[$i]['shouzhuyuan']='是';}
             $arr[$i]['zhiliao']=$patients['zhiliao'.$i];
+            if($arr[$i]['zhiliao']==0){$arr[$i]['zhiliao']='否';}
+            else if($arr[$i]['zhiliao']==1){$arr[$i]['zhiliao']='是';}
             $arr[$i]['zhiliaofei']=$patients['zhiliaofei'.$i];
             $arr[$i]['shoushu']=$patients['shoushu'.$i];
+            if($arr[$i]['shoushu']==0){$arr[$i]['shoushu']='否';}
+            else if($arr[$i]['shoushu']==1){$arr[$i]['shoushu']='是';}
             $arr[$i]['shoushufei']=$patients['shoushufei'.$i];
             $arr[$i]['menzhenxiaofei']=$patients['menzhenxiaofei'.$i];
             $arr[$i]['riqi']=$patients['date'];
@@ -182,14 +205,13 @@ class Data_add extends CI_Controller {
 //        var_dump($arr);
         
 //        $data=$this->data_add_m->patients_info_select();
-=======
 //        var_dump($this->input->post(NULL,TRUE));
         $jiuzhen=$this->input->post(NULL,TRUE);
-        var_dump($jiuzhen);
-        echo $jiuzhen['date'];
+//        var_dump($jiuzhen);
+//        echo $jiuzhen['date'];
         foreach ($jiuzhen as $key => $value) {
-            echo $value ;
-            echo '<br>';
+//            echo $value ;
+//            echo '<br>';
         }
 //        $data['class_info'] = $this->info_add_m->class_info_select();
 //        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
@@ -198,7 +220,7 @@ class Data_add extends CI_Controller {
 //        $data['med_in_type'] = $this->info_add_m->med_in_type_select();
 //        $data['changjia'] = $this->info_add_m->changjia_select();
 //        $data['supplier'] = $this->drug_purchase_m->supplier_select();
->>>>>>> 98aa339470148dcdc4a31722d3e1f86b4a03b367
+
 //        var_dump($data);
         $patients_ic=$this->db->query('select * from patients_ic');
         

@@ -137,7 +137,7 @@
                         </td>
                         <!--来源渠道-->
                         <td>
-<<<<<<< HEAD
+
                             <select name="laiyuanqudao0" id="laiyuanqudao0">
                                 <option value="0">网络</option>
                                 <option value="1">电话</option>
@@ -150,8 +150,8 @@
                                 <option value="8">介绍</option>
                                 <option value="9">来过</option>
                                 <option value="10">会员证</option>
-=======
-                            <select id="laiyuan0" name="laiyuan0">
+
+<!--                            <select id="laiyuan0" name="laiyuan0">
                                 <option>网络</option>
                                 <option>电话</option>
                                 <option>QQ</option>
@@ -163,8 +163,7 @@
                                 <option>介绍</option>
                                 <option>来过</option>
                                 <option>会员证</option>
->>>>>>> 98aa339470148dcdc4a31722d3e1f86b4a03b367
-                            </select>
+                            </select>-->
                         </td>
                         <!--年龄-->
                         <td><input type="text" size="4" name="nianling0" id="nianling0" value="0"/></td>
