@@ -16,22 +16,30 @@ class data_add_m extends CI_Model {
 //        $this->db->like('shangpin_id','0001' , 'after');
         $query = $this->db->get('patients_ic');
         return $query->result();
+    }   
+    
+    function zhuyuan_shouru_every_insert($arr) {
+        $this->db->insert_batch('zhuyuan_shouru_every', $arr);
     }
     
-    function shangpin_info_select_by_id($class_id) {
+    function zhuyuan_shouru_every_select($date){
         $this->db->select('*');
-        $this->db->like('shangpin_id',$class_id , 'after');
-        $query = $this->db->get('shangpin_info');
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('zhuyuan_shouru_every');
         return $query->result();
     }
     
-    function guige_select_by_id($shangpin_id) {
+    function menzhen_shouru_every_insert($arr) {
+        $this->db->insert_batch('menzhen_shouru_every', $arr);
+    }
+    
+    function menzhen_shouru_every_select($date){
         $this->db->select('*');
-        $this->db->like('guige_id',$shangpin_id , 'after');
-        $query = $this->db->get('guige');
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('menzhen_shouru_every');
         return $query->result();
     }
     
-    
+
 
 }

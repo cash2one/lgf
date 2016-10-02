@@ -189,11 +189,11 @@
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
                         <tr height=22>
                             <td style="padding-left: 30px" background=<?php echo base_url().'/img/menu_bt.jpg' ?>><a 
-                                    class=menuparent onclick=expand(3) 
+                                    class=menuparent onclick=expand(1) 
                                     href="javascript:void(0);">数据录入</a></td></tr>
                         <tr height=4>
                             <td></td></tr></table>
-                    <table id=child3 style="display: none" cellspacing=0 cellpadding=0 
+                    <table id=child1 style="display: none" cellspacing=0 cellpadding=0 
                            width=150 border=0>
                         
                         <tr height=20>
@@ -206,20 +206,32 @@
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
                             <td ><a class=menuchild 
-                                   href="<?php echo base_url().'index.php/data_add/date_gen_index' ?>" 
-                                   target=right>日期生成</a></td></tr>
+                                   href="<?php echo base_url().'index.php/data_add/menzhen_shouru_every' ?>" 
+                                   target=right>每日门诊录入</a></td></tr>
+                        <tr height=20>
+                            <td align=middle width=30><img height=9 
+                                                           src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
+                            <td ><a class=menuchild 
+                                   href="<?php echo base_url().'index.php/data_add/zhuyuan_shouru_every' ?>" 
+                                   target=right>每日住院录入</a></td></tr>
                     </table>
                     
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
                         <tr height=22>
                             <td style="padding-left: 30px" background=<?php echo base_url().'/img/menu_bt.jpg' ?>><a 
-                                    class=menuparent onclick=expand(3) 
+                                    class=menuparent onclick=expand(2) 
                                     href="javascript:void(0);">报表查询</a></td></tr>
                         <tr height=4>
                             <td></td></tr></table>
-                    <table id=child3 style="display: none" cellspacing=0 cellpadding=0 
+                    <table id=child2 style="display: none" cellspacing=0 cellpadding=0 
                            width=150 border=0>
                         
+                        <tr height=20>
+                            <td align=middle width=30><img height=9 
+                                                           src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
+                            <td ><a class=menuchild 
+                                   href="<?php echo base_url().'index.php/patients/patients_menzhen_every' ?>" 
+                                   target=right>每日数据</a></td></tr>
                         <tr height=20>
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
@@ -279,11 +291,11 @@
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
                         <tr height=22>
                             <td style="padding-left: 30px" background=<?php echo base_url().'/img/menu_bt.jpg' ?>><a 
-                                    class=menuparent onclick=expand(4) 
+                                    class=menuparent onclick=expand(3) 
                                     href="javascript:void(0);">系统管理</a></td></tr>
                         <tr height=4>
                             <td></td></tr></table>
-                    <table id=child4 style="display: none" cellspacing=0 cellpadding=0 
+                    <table id=child3 style="display: none" cellspacing=0 cellpadding=0 
                            width=150 border=0>
                         <tr height=20>
                             <td align=middle width=30><img height=9 

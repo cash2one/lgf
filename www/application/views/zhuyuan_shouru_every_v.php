@@ -22,7 +22,7 @@
         
     </head>
     <body>
-        <form name="shouru_every" action="<?php echo base_url() . 'index.php/data_add/shouru_every_add' ?>" method="post" >
+        <form name="shouru_every" action="<?php echo base_url() . 'index.php/data_add/zhuyuan_shouru_every_add' ?>" method="post" >
             <table class="table">
                 <tr>
                     <td>日期：</td>

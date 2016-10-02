@@ -17,9 +17,9 @@
     </head>
     <body>
         <h1>&nbsp;</h1>
-        <h1 align="center">恭喜你！导入成功！</h1>
+        <h1 align="center"><?php echo $pr; ?></h1>
         <!--<form name="subform_changjia" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post">-->
-            <?php echo $html; ?>
+            <?php echo $html_shouru_every; ?>
 <!--            <input type="submit" size="17" name="submit" value="提交"/>-->
         <!--</form>-->
     </body>

@@ -222,11 +222,11 @@ class Data_add extends CI_Controller {
 //        $data['supplier'] = $this->drug_purchase_m->supplier_select();
 
 //        var_dump($data);
-        $patients_ic=$this->db->query('select * from patients_ic');
+//        $patients_ic=$this->db->query('select * from patients_ic');
         
 //      设置表格类
         $template = array(
-            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="mytable">'
+            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="table">'
         );
 
         $this->table->set_template($template);
@@ -260,8 +260,86 @@ class Data_add extends CI_Controller {
         
     }
     
-    public function shouru_every(){
-        $this->load->view('shouru_every_v');
+    public function zhuyuan_shouru_every(){
+        $this->load->view('zhuyuan_shouru_every_v');
+    }
+    
+    public function zhuyuan_shouru_every_add(){
+        $shouru_every=$this->input->post(NULL,TRUE);
+//        var_dump($shouru_every);
+
+        $arr[0]['riqi']=$shouru_every['date'];
+        $arr[0]['yujiaokuan']=$shouru_every['yujiaokuan'];
+        $arr[0]['tuibukuan']=$shouru_every['tuibukuan'];
+        $arr[0]['xianjinshouru']=$shouru_every['xianjinshouru'];
+        $arr[0]['yibaoshouru']=$shouru_every['yibaoshouru'];
+
+//        var_dump($arr);
+        
+        $riqi_arr=$this->data_add_m->zhuyuan_shouru_every_select($arr[0]['riqi']);
+//        var_dump($riqi);
+        if(!empty($riqi_arr)){
+            $data['pr']='您选择的日期已维护数据！';
+            $data['html_shouru_every']=null;
+        }else{
+            $data['pr']='恭喜你！导入成功！！';
+//      设置表格类
+        $template = array(
+            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="table">'
+        );
+
+        $this->table->set_template($template);
+        $this->table->set_heading( '日期', '预付款','退补款','现金收入','医保收入');
+        $data['html_shouru_every']=$this->table->generate($arr);
+        }
+//        foreach($riqi_arr as $val){
+//            echo $riqi=$val->riqi;
+//        }
+        
+        
+        $this->data_add_m->zhuyuan_shouru_every_insert($arr);
+        $this->load->view('zhuyuan_shouru_every_add_v',$data);
+    }
+    
+    public function menzhen_shouru_every(){
+        $this->load->view('menzhen_shouru_every_v');
+    }
+    
+    public function menzhen_shouru_every_add(){
+        $shouru_every=$this->input->post(NULL,TRUE);
+//        var_dump($shouru_every);
+
+        $arr[0]['riqi']=$shouru_every['date'];
+        $arr[0]['yinlian']=$shouru_every['yinlian'];
+        $arr[0]['yibao']=$shouru_every['yibao'];
+        $arr[0]['dangrizhichu']=$shouru_every['dangrizhichu'];
+        $arr[0]['dabizhichu']=$shouru_every['dabizhichu'];
+
+//        var_dump($arr);
+        
+        $riqi_arr=$this->data_add_m->menzhen_shouru_every_select($arr[0]['riqi']);
+//        var_dump($riqi);
+        if(!empty($riqi_arr)){
+            $data['pr']='您选择的日期已维护数据！';
+            $data['html_shouru_every']=null;
+        }else{
+            $data['pr']='恭喜你！导入成功！！';
+//      设置表格类
+        $template = array(
+            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="table">'
+        );
+
+        $this->table->set_template($template);
+        $this->table->set_heading( '日期', '银联','医保','当日支出','大笔支出');
+        $data['html_shouru_every']=$this->table->generate($arr);
+        }
+//        foreach($riqi_arr as $val){
+//            echo $riqi=$val->riqi;
+//        }
+        
+        
+        $this->data_add_m->menzhen_shouru_every_insert($arr);
+        $this->load->view('menzhen_shouru_every_add_v',$data);
     }
     
 }
