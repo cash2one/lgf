@@ -62,4 +62,53 @@ class patients_m extends CI_Model {
         $query=$this->db->count_all_results('patients_ic');
         return $query;
     }
+    
+    function patients_select_liushi($date,$keshi){
+        $liushi=array('初诊流失','复诊流失');
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where_in('liushi',$liushi);
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
+    function patients_select_zhiliaofei($date,$keshi){
+        $this->db->select('zhiliaofei');
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
+    function patients_select_shoushufei($date,$keshi){
+        $this->db->select('shoushufei');
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
+    function patients_select_menzhenxiaofei($date,$keshi){
+        $this->db->select('menzhenxiaofei');
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
+    function patients_select_zhiliao($date,$keshi){
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('zhiliao','是');
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
+    function patients_select_shoushu($date,$keshi){
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('shoushu','是');
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
 }

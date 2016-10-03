@@ -43,7 +43,7 @@
                     <td>当日支出：</td>
                     <td><input type="text" name="dangrizhichu" value="0"/></td>
                     <!--医保收入-->
-                    <td>大笔指出：</td>
+                    <td>大笔支出：</td>
                     <td><input type="text" name="dabizhichu" value="0"/></td>
                 </tr>
                 <tr>

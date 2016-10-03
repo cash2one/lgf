@@ -234,6 +234,8 @@ class Data_add extends CI_Controller {
         $data['html']=$this->table->generate($arr);
         
         
+        
+        
         $this->data_add_m->patients_info_insert($arr);
         $this->load->view('patients_ic_v',$data);
 //      设置表单校验类

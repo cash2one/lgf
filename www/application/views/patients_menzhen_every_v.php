@@ -66,26 +66,26 @@
                     <td>男科</td>
                     <td><?php echo $nanke_chuzhen_count ?></td>
                     <td><?php echo $nanke_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $nanke_liushi_count ?></td>
+                    <td><?php echo $nanke_zhiliaofei ?></td>
+                    <td><?php echo $nanke_shoushufei ?></td>
+                    <td><?php echo $nanke_menzhenxiaofei ?></td>
+                    <td><?php echo $nanke_fuzhenlv ?>%</td>
+                    <td><?php echo $nanke_zhiliao_rate ?>%</td>
+                    <td><?php echo $nanke_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>外科</td>
                     <td><?php echo $waike_chuzhen_count ?></td>
                     <td><?php echo $waike_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $waike_liushi_count ?></td>
+                    <td><?php echo $waike_zhiliaofei ?></td>
+                    <td><?php echo $waike_shoushufei ?></td>
+                    <td><?php echo $waike_menzhenxiaofei ?></td>
+                    <td><?php echo $waike_fuzhenlv ?>%</td>
+                    <td><?php echo $waike_zhiliao_rate ?>%</td>
+                    <td><?php echo $waike_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo 0 ?>%</td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
@@ -109,7 +109,7 @@
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo 0 ?>%</td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
@@ -118,91 +118,91 @@
                     <td>产科</td>
                     <td><?php echo $chanke_chuzhen_count ?></td>
                     <td><?php echo $chanke_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $chanke_liushi_count ?></td>
+                    <td><?php echo $chanke_zhiliaofei ?></td>
+                    <td><?php echo $chanke_shoushufei ?></td>
+                    <td><?php echo $chanke_menzhenxiaofei ?></td>
+                    <td><?php echo $chanke_fuzhenlv ?>%</td>
+                    <td><?php echo $chanke_zhiliao_rate ?>%</td>
+                    <td><?php echo $chanke_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>耳鼻喉科</td>
                     <td><?php echo $erbihou_chuzhen_count ?></td>
                     <td><?php echo $erbihou_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $erbihou_liushi_count ?></td>
+                    <td><?php echo $erbihou_zhiliaofei ?></td>
+                    <td><?php echo $erbihou_shoushufei ?></td>
+                    <td><?php echo $erbihou_menzhenxiaofei ?></td>
+                    <td><?php echo $erbihou_fuzhenlv ?>%</td>
+                    <td><?php echo $erbihou_zhiliao_rate ?>%</td>
+                    <td><?php echo $erbihou_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>理疗科</td>
                     <td><?php echo $tengtong_chuzhen_count ?></td>
                     <td><?php echo $tengtong_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $tengtong_liushi_count ?></td>
+                    <td><?php echo $tengtong_zhiliaofei ?></td>
+                    <td><?php echo $tengtong_shoushufei ?></td>
+                    <td><?php echo $tengtong_menzhenxiaofei ?></td>
+                    <td><?php echo $tengtong_fuzhenlv ?>%</td>
+                    <td><?php echo $tengtong_zhiliao_rate ?>%</td>
+                    <td><?php echo $tengtong_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>其他</td>
                     <td><?php echo $qita_chuzhen_count ?></td>
                     <td><?php echo $qita_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $qita_liushi_count ?></td>
+                    <td><?php echo $qita_zhiliaofei ?></td>
+                    <td><?php echo $qita_shoushufei ?></td>
+                    <td><?php echo $qita_menzhenxiaofei ?></td>
+                    <td><?php echo $qita_fuzhenlv ?>%</td>
+                    <td><?php echo $qita_zhiliao_rate ?>%</td>
+                    <td><?php echo $qita_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>内科</td>
                     <td><?php echo $neike_chuzhen_count ?></td>
                     <td><?php echo $neike_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $neike_liushi_count ?></td>
+                    <td><?php echo $neike_zhiliaofei ?></td>
+                    <td><?php echo $neike_shoushufei ?></td>
+                    <td><?php echo $neike_menzhenxiaofei ?></td>
+                    <td><?php echo $neike_fuzhenlv ?>%</td>
+                    <td><?php echo $neike_zhiliao_rate ?>%</td>
+                    <td><?php echo $neike_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>中医科</td>
                     <td><?php echo $zhongyi_chuzhen_count ?></td>
                     <td><?php echo $zhongyi_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zhongyi_liushi_count ?></td>
+                    <td><?php echo $zhongyi_zhiliaofei ?></td>
+                    <td><?php echo $zhongyi_shoushufei ?></td>
+                    <td><?php echo $zhongyi_menzhenxiaofei ?></td>
+                    <td><?php echo $zhongyi_fuzhenlv ?>%</td>
+                    <td><?php echo $zhongyi_zhiliao_rate ?>%</td>
+                    <td><?php echo $zhongyi_shoushu_rate ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>总门诊</td>
                     <td><?php echo $zongmenzhen_chuzhen ?></td>
                     <td><?php echo $zongmenzhen_fuzhen ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zongmenzhen_liushi ?></td>
+                    <td><?php echo $zongmenzhen_zhiliaofei ?></td>
+                    <td><?php echo $zongmenzhen_shoushufei ?></td>
+                    <td><?php echo $zongmenzhen_menzhenxiaofei ?></td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_fuzhenlv) ?>%</td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_zhiliao_rate) ?>%</td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_shoushu_rate) ?>%</td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
