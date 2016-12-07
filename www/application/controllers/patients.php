@@ -94,6 +94,7 @@ class Patients extends CI_Controller {
     public function patients_menzhen_every(){
         $date_every=date('Y-m-d');
         $menzhen_shouru_every = $this->patients_m->menzhen_shouru_every_select($date_every);
+        $menzhen_shouru_every_sum = $this->patients_m->menzhen_shouru_every_select_sum($date_every);
         $patients = $this->patients_m->patients_select($date_every);
         
 //      初诊
@@ -463,21 +464,510 @@ class Patients extends CI_Controller {
             $data['zongmenzhen_shoushu_rate'] = 0;
         }
         
-//        var_dump($shouru_every);
+//      人均
+        if ($data['nanke_chuzhen_count'] != 0) {
+            $data['nanke_renjun'] = $data['nanke_menzhenxiaofei'] / $data['nanke_chuzhen_count'];
+        } else {
+            $data['nanke_renjun'] = 0;
+        }
+        if ($data['waike_chuzhen_count'] != 0) {
+            $data['waike_renjun'] = $data['waike_menzhenxiaofei'] / $data['waike_chuzhen_count'];
+        } else {
+            $data['waike_renjun'] = 0;
+        }
+        if ($data['chanke_chuzhen_count'] != 0) {
+            $data['chanke_renjun'] = $data['chanke_menzhenxiaofei'] / $data['chanke_chuzhen_count'];
+        } else {
+            $data['chanke_renjun'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count'] != 0) {
+            $data['erbihou_renjun'] = $data['erbihou_menzhenxiaofei'] / $data['erbihou_chuzhen_count'];
+        } else {
+            $data['erbihou_renjun'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count'] != 0) {
+            $data['tengtong_renjun'] = $data['tengtong_menzhenxiaofei'] / $data['tengtong_chuzhen_count'];
+        } else {
+            $data['tengtong_renjun'] = 0;
+        }
+        if ($data['qita_chuzhen_count'] != 0) {
+            $data['qita_renjun'] = $data['qita_menzhenxiaofei'] / $data['qita_chuzhen_count'];
+        } else {
+            $data['qita_renjun'] = 0;
+        }
+        if ($data['neike_chuzhen_count'] != 0) {
+            $data['neike_renjun'] = $data['neike_menzhenxiaofei'] / $data['neike_chuzhen_count'];
+        } else {
+            $data['neike_renjun'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count'] != 0) {
+            $data['zhongyi_renjun'] = $data['zhongyi_menzhenxiaofei'] / $data['zhongyi_chuzhen_count'];
+        } else {
+            $data['zhongyi_renjun'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen'] != 0) {
+            $data['zongmenzhen_renjun'] = $data['zongmenzhen_menzhenxiaofei'] / $data['zongmenzhen_chuzhen'];
+        } else {
+            $data['zongmenzhen_renjun'] = 0;
+        }
+        
+        
+//      当月累计
+//      当月累计初诊
+        $data['nanke_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '男科', '初诊');
+        $data['waike_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '外科', '初诊');
+        $data['chanke_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '产科', '初诊');
+        $data['erbihou_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '耳鼻喉', '初诊');
+        $data['tengtong_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '疼痛科', '初诊');
+        $data['qita_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '其他', '初诊');
+        $data['neike_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '内科', '初诊');
+        $data['zhongyi_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '中医', '初诊');
+        $data['zongmenzhen_chuzhen_sum'] = $data['nanke_chuzhen_count_sum'] + $data['waike_chuzhen_count_sum'] + $data['chanke_chuzhen_count_sum'] + $data['erbihou_chuzhen_count_sum'] + $data['tengtong_chuzhen_count_sum'] + $data['qita_chuzhen_count_sum'] + $data['neike_chuzhen_count_sum'] + $data['zhongyi_chuzhen_count_sum'];
+//      当月累计复诊
+        $data['nanke_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '男科', '复诊');
+        $data['waike_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '外科', '复诊');
+        $data['chanke_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '产科', '复诊');
+        $data['erbihou_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '耳鼻喉', '复诊');
+        $data['tengtong_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '疼痛科', '复诊');
+        $data['qita_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '其他', '复诊');
+        $data['neike_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '内科', '复诊');
+        $data['zhongyi_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '中医', '复诊');
+        $data['zongmenzhen_fuzhen_sum'] = $data['nanke_fuzhen_count_sum'] + $data['waike_fuzhen_count_sum'] + $data['chanke_fuzhen_count_sum'] + $data['erbihou_fuzhen_count_sum'] + $data['tengtong_fuzhen_count_sum'] + $data['qita_fuzhen_count_sum'] + $data['neike_fuzhen_count_sum'] + $data['zhongyi_fuzhen_count_sum'];
+//      当月累计流失
+        $data['nanke_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '男科');
+        $data['waike_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '外科');
+        $data['chanke_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '产科');
+        $data['erbihou_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '耳鼻喉');
+        $data['tengtong_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '疼痛科');
+        $data['qita_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '其他');
+        $data['neike_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '内科');
+        $data['zhongyi_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '中医');
+        $data['zongmenzhen_liushi_sum'] = $data['nanke_liushi_count_sum'] + $data['waike_liushi_count_sum'] + $data['chanke_liushi_count_sum'] + $data['erbihou_liushi_count_sum'] + $data['tengtong_liushi_count_sum'] + $data['qita_liushi_count_sum'] + $data['neike_liushi_count_sum'] + $data['zhongyi_liushi_count_sum'];
+//      当月累计治疗费
+        $nanke_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '男科');
+        $data['nanke_zhiliaofei_sum']=0;
+        if(!empty($nanke_zhiliaofei_sum)){
+            foreach ($nanke_zhiliaofei_sum as $val){
+            $data['nanke_zhiliaofei_sum']=$data['nanke_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $waike_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '外科');
+        $data['waike_zhiliaofei_sum']=0;
+        if(!empty($waike_zhiliaofei_sum)){
+            foreach ($waike_zhiliaofei_sum as $val){
+            $data['waike_zhiliaofei_sum']=$data['waike_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $chanke_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '产科');
+        $data['chanke_zhiliaofei_sum']=0;
+        if(!empty($chanke_zhiliaofei_sum)){
+            foreach ($chanke_zhiliaofei_sum as $val){
+            $data['chanke_zhiliaofei_sum']=$data['chanke_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $erbihou_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '耳鼻喉');
+        $data['erbihou_zhiliaofei_sum']=0;
+        if(!empty($erbihou_zhiliaofei_sum)){
+            foreach ($erbihou_zhiliaofei_sum as $val){
+            $data['erbihou_zhiliaofei_sum']=$data['erbihou_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $tengtong_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '疼痛科');
+        $data['tengtong_zhiliaofei_sum']=0;
+        if(!empty($tengtong_zhiliaofei_sum)){
+            foreach ($tengtong_zhiliaofei_sum as $val){
+            $data['tengtong_zhiliaofei_sum']=$data['tengtong_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $qita_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '其他');
+        $data['qita_zhiliaofei_sum']=0;
+        if(!empty($qita_zhiliaofei_sum)){
+            foreach ($qita_zhiliaofei_sum as $val){
+            $data['qita_zhiliaofei_sum']=$data['qita_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $neike_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '内科');
+        $data['neike_zhiliaofei_sum']=0;
+        if(!empty($neike_zhiliaofei_sum)){
+            foreach ($neike_zhiliaofei_sum as $val){
+            $data['neike_zhiliaofei_sum']=$data['neike_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $zhongyi_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '中医');
+        $data['zhongyi_zhiliaofei_sum']=0;
+        if(!empty($zhongyi_zhiliaofei_sum)){
+            foreach ($zhongyi_zhiliaofei_sum as $val){
+            $data['zhongyi_zhiliaofei_sum']=$data['zhongyi_zhiliaofei_sum']+$val->zhiliaofei;
+            }
+        }
+        $data['zongmenzhen_zhiliaofei_sum'] = $data['nanke_zhiliaofei_sum'] + $data['waike_zhiliaofei_sum'] + $data['chanke_zhiliaofei_sum'] + $data['erbihou_zhiliaofei_sum'] + $data['tengtong_zhiliaofei_sum'] + $data['qita_zhiliaofei_sum'] + $data['neike_zhiliaofei_sum'] + $data['zhongyi_zhiliaofei_sum'];
+        
+//      当月累计手术费
+        $nanke_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '男科');
+        $data['nanke_shoushufei_sum']=0;
+        if(!empty($nanke_shoushufei_sum)){
+            foreach ($nanke_shoushufei_sum as $val){
+            $data['nanke_shoushufei_sum']=$data['nanke_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $waike_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '外科');
+        $data['waike_shoushufei_sum']=0;
+        if(!empty($waike_shoushufei_sum)){
+            foreach ($waike_shoushufei_sum as $val){
+            $data['waike_shoushufei_sum']=$data['waike_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $chanke_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '产科');
+        $data['chanke_shoushufei_sum']=0;
+        if(!empty($chanke_shoushufei_sum)){
+            foreach ($chanke_shoushufei_sum as $val){
+            $data['chanke_shoushufei_sum']=$data['chanke_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $erbihou_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '耳鼻喉');
+        $data['erbihou_shoushufei_sum']=0;
+        if(!empty($erbihou_shoushufei_sum)){
+            foreach ($erbihou_shoushufei_sum as $val){
+            $data['erbihou_shoushufei_sum']=$data['erbihou_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $tengtong_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '疼痛科');
+        $data['tengtong_shoushufei_sum']=0;
+        if(!empty($tengtong_shoushufei_sum)){
+            foreach ($tengtong_shoushufei_sum as $val){
+            $data['tengtong_shoushufei_sum']=$data['tengtong_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $qita_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '其他');
+        $data['qita_shoushufei_sum']=0;
+        if(!empty($qita_shoushufei_sum)){
+            foreach ($qita_shoushufei_sum as $val){
+            $data['qita_shoushufei_sum']=$data['qita_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $neike_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '内科');
+        $data['neike_shoushufei_sum']=0;
+        if(!empty($neike_shoushufei_sum)){
+            foreach ($neike_shoushufei_sum as $val){
+            $data['neike_shoushufei_sum']=$data['neike_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $zhongyi_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '中医');
+        $data['zhongyi_shoushufei_sum']=0;
+        if(!empty($zhongyi_shoushufei_sum)){
+            foreach ($zhongyi_shoushufei_sum as $val){
+            $data['zhongyi_shoushufei_sum']=$data['zhongyi_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $data['zongmenzhen_shoushufei_sum'] = $data['nanke_shoushufei_sum'] + $data['waike_shoushufei_sum'] + $data['chanke_shoushufei_sum'] + $data['erbihou_shoushufei_sum'] + $data['tengtong_shoushufei_sum'] + $data['qita_shoushufei_sum'] + $data['neike_shoushufei_sum'] + $data['zhongyi_shoushufei_sum'];
+        
+//      当月累计门诊消费
+        $nanke_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '男科');
+        $data['nanke_menzhenxiaofei_sum']=0;
+        if(!empty($nanke_menzhenxiaofei_sum)){
+            foreach ($nanke_menzhenxiaofei_sum as $val){
+            $data['nanke_menzhenxiaofei_sum']=$data['nanke_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $waike_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '外科');
+        $data['waike_menzhenxiaofei_sum']=0;
+        if(!empty($waike_menzhenxiaofei_sum)){
+            foreach ($waike_menzhenxiaofei_sum as $val){
+            $data['waike_menzhenxiaofei_sum']=$data['waike_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $chanke_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '产科');
+        $data['chanke_menzhenxiaofei_sum']=0;
+        if(!empty($chanke_menzhenxiaofei_sum)){
+            foreach ($chanke_menzhenxiaofei_sum as $val){
+            $data['chanke_menzhenxiaofei_sum']=$data['chanke_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $erbihou_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '耳鼻喉');
+        $data['erbihou_menzhenxiaofei_sum']=0;
+        if(!empty($erbihou_menzhenxiaofei_sum)){
+            foreach ($erbihou_menzhenxiaofei_sum as $val){
+            $data['erbihou_menzhenxiaofei_sum']=$data['erbihou_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $tengtong_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '疼痛科');
+        $data['tengtong_menzhenxiaofei_sum']=0;
+        if(!empty($tengtong_menzhenxiaofei_sum)){
+            foreach ($tengtong_menzhenxiaofei_sum as $val){
+            $data['tengtong_menzhenxiaofei_sum']=$data['tengtong_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $qita_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '其他');
+        $data['qita_menzhenxiaofei_sum']=0;
+        if(!empty($qita_menzhenxiaofei_sum)){
+            foreach ($qita_menzhenxiaofei_sum as $val){
+            $data['qita_menzhenxiaofei_sum']=$data['qita_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $neike_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '内科');
+        $data['neike_menzhenxiaofei_sum']=0;
+        if(!empty($neike_menzhenxiaofei_sum)){
+            foreach ($neike_menzhenxiaofei_sum as $val){
+            $data['neike_menzhenxiaofei_sum']=$data['neike_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $zhongyi_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '中医');
+        $data['zhongyi_menzhenxiaofei_sum']=0;
+        if(!empty($zhongyi_menzhenxiaofei_sum)){
+            foreach ($zhongyi_menzhenxiaofei_sum as $val){
+            $data['zhongyi_menzhenxiaofei_sum']=$data['zhongyi_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $data['zongmenzhen_menzhenxiaofei_sum'] = $data['nanke_menzhenxiaofei_sum'] + $data['waike_menzhenxiaofei_sum'] + $data['chanke_menzhenxiaofei_sum'] + $data['erbihou_menzhenxiaofei_sum'] + $data['tengtong_menzhenxiaofei_sum'] + $data['qita_menzhenxiaofei_sum'] + $data['neike_menzhenxiaofei_sum'] + $data['zhongyi_menzhenxiaofei_sum'];
+        
+//      当月累计复诊率
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_fuzhenlv_sum'] = $data['nanke_fuzhen_count_sum'] / $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_fuzhenlv_sum'] = 0;
+        }
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_fuzhenlv_sum'] = $data['waike_fuzhen_count_sum'] / $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_fuzhenlv_sum'] = 0;
+        }
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_fuzhenlv_sum'] = $data['chanke_fuzhen_count_sum'] / $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_fuzhenlv_sum'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_fuzhenlv_sum'] = $data['erbihou_fuzhen_count_sum'] / $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_fuzhenlv_sum'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_fuzhenlv_sum'] = $data['tengtong_fuzhen_count_sum'] / $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_fuzhenlv_sum'] = 0;
+        }
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_fuzhenlv_sum'] = $data['qita_fuzhen_count_sum'] / $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_fuzhenlv_sum'] = 0;
+        }
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_fuzhenlv_sum'] = $data['neike_fuzhen_count_sum'] / $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_fuzhenlv_sum'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_fuzhenlv_sum'] = $data['zhongyi_fuzhen_count_sum'] / $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_fuzhenlv_sum'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_fuzhenlv_sum'] = $data['zongmenzhen_fuzhen_sum'] / $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_fuzhenlv_sum'] = 0;
+        }
+        
+//      当月累计治疗比
+        $data['nanke_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '男科');
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_zhiliao_rate_sum']=$data['nanke_zhiliao_count_sum']/ $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_zhiliao_rate_sum'] = 0;
+        }
+        $data['waike_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '外科');
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_zhiliao_rate_sum']=$data['waike_zhiliao_count_sum']/ $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_zhiliao_rate_sum'] = 0;
+        }
+        $data['chanke_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '产科');
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_zhiliao_rate_sum']=$data['chanke_zhiliao_count_sum']/ $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_zhiliao_rate_sum'] = 0;
+        }
+        $data['erbihou_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '耳鼻喉');
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_zhiliao_rate_sum']=$data['erbihou_zhiliao_count_sum']/ $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_zhiliao_rate_sum'] = 0;
+        }
+        $data['tengtong_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '疼痛科');
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_zhiliao_rate_sum']=$data['tengtong_zhiliao_count_sum']/ $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_zhiliao_rate_sum'] = 0;
+        }
+        $data['qita_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '其他');
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_zhiliao_rate_sum']=$data['qita_zhiliao_count_sum']/ $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_zhiliao_rate_sum'] = 0;
+        }
+        $data['neike_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '内科');
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_zhiliao_rate_sum']=$data['neike_zhiliao_count_sum']/ $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_zhiliao_rate_sum'] = 0;
+        }
+        $data['zhongyi_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '中医');
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_zhiliao_rate_sum']=$data['zhongyi_zhiliao_count_sum']/ $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_zhiliao_rate_sum'] = 0;
+        }
+        $data['zongmenzhen_zhiliao_sum'] = $data['nanke_zhiliao_count_sum'] + $data['waike_zhiliao_count_sum'] + $data['chanke_zhiliao_count_sum'] + $data['erbihou_zhiliao_count_sum'] + $data['tengtong_zhiliao_count_sum'] + $data['qita_zhiliao_count_sum'] + $data['neike_zhiliao_count_sum'] + $data['zhongyi_zhiliao_count_sum'];
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_zhiliao_rate_sum']=$data['zongmenzhen_zhiliao_sum']/ $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_zhiliao_rate_sum'] = 0;
+        }
+
+        
+//      当月累计手术比
+        $data['nanke_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '男科');
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_shoushu_rate_sum']=$data['nanke_shoushu_count_sum']/ $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_shoushu_rate_sum'] = 0;
+        }
+        $data['waike_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '外科');
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_shoushu_rate_sum']=$data['waike_shoushu_count_sum']/ $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_shoushu_rate_sum'] = 0;
+        }
+        $data['chanke_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '产科');
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_shoushu_rate_sum']=$data['chanke_shoushu_count_sum']/ $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_shoushu_rate_sum'] = 0;
+        }
+        $data['erbihou_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '耳鼻喉');
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_shoushu_rate_sum']=$data['erbihou_shoushu_count_sum']/ $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_shoushu_rate_sum'] = 0;
+        }
+        $data['tengtong_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '疼痛科');
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_shoushu_rate_sum']=$data['tengtong_shoushu_count_sum']/ $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_shoushu_rate_sum'] = 0;
+        }
+        $data['qita_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '其他');
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_shoushu_rate_sum']=$data['qita_shoushu_count_sum']/ $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_shoushu_rate_sum'] = 0;
+        }
+        $data['neike_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '内科');
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_shoushu_rate_sum']=$data['neike_shoushu_count_sum']/ $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_shoushu_rate_sum'] = 0;
+        }
+        $data['zhongyi_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '中医');
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_shoushu_rate_sum']=$data['zhongyi_shoushu_count_sum']/ $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_shoushu_rate_sum'] = 0;
+        }
+        $data['zongmenzhen_shoushu_sum'] = $data['nanke_shoushu_count_sum'] + $data['waike_shoushu_count_sum'] + $data['chanke_shoushu_count_sum'] + $data['erbihou_shoushu_count_sum'] + $data['tengtong_shoushu_count_sum'] + $data['qita_shoushu_count_sum'] + $data['neike_shoushu_count_sum'] + $data['zhongyi_shoushu_count_sum'];
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_shoushu_rate_sum']=$data['zongmenzhen_shoushu_sum']/ $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_shoushu_rate_sum'] = 0;
+        }
+        
+//      当月累计人均
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_renjun_sum'] = $data['nanke_menzhenxiaofei_sum'] / $data['nanke_chuzhen_count_sum'];
+        } else {
+            $data['nanke_renjun_sum'] = 0;
+        }
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_renjun_sum'] = $data['waike_menzhenxiaofei_sum'] / $data['waike_chuzhen_count_sum'];
+        } else {
+            $data['waike_renjun_sum'] = 0;
+        }
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_renjun_sum'] = $data['chanke_menzhenxiaofei_sum'] / $data['chanke_chuzhen_count_sum'];
+        } else {
+            $data['chanke_renjun_sum'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_renjun_sum'] = $data['erbihou_menzhenxiaofei_sum'] / $data['erbihou_chuzhen_count_sum'];
+        } else {
+            $data['erbihou_renjun_sum'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_renjun_sum'] = $data['tengtong_menzhenxiaofei_sum'] / $data['tengtong_chuzhen_count_sum'];
+        } else {
+            $data['tengtong_renjun_sum'] = 0;
+        }
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_renjun_sum'] = $data['qita_menzhenxiaofei_sum'] / $data['qita_chuzhen_count_sum'];
+        } else {
+            $data['qita_renjun_sum'] = 0;
+        }
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_renjun_sum'] = $data['neike_menzhenxiaofei_sum'] / $data['neike_chuzhen_count_sum'];
+        } else {
+            $data['neike_renjun_sum'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_renjun_sum'] = $data['zhongyi_menzhenxiaofei_sum'] / $data['zhongyi_chuzhen_count_sum'];
+        } else {
+            $data['zhongyi_renjun_sum'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_renjun_sum'] = $data['zongmenzhen_menzhenxiaofei_sum'] / $data['zongmenzhen_chuzhen_sum'];
+        } else {
+            $data['zongmenzhen_renjun_sum'] = 0;
+        }
+        
+        
+//      每日收支
+        $data['xianjinshouru']=0;
+        $data['yinlian']=0;
+        $data['yibao']=0;
+        $data['dangrizhichu']=0;
+        $data['dabizhichu']=0;
         if(!empty($menzhen_shouru_every)){
             foreach($menzhen_shouru_every as $val){
+                $data['xianjinshouru']=$val->xianjinshouru;
                 $data['yinlian']=$val->yinlian;
                 $data['yibao']=$val->yibao;
                 $data['dangrizhichu']=$val->dangrizhichu;
                 $data['dabizhichu']=$val->dabizhichu;
+                
             }
+            
         }
-        else{
-            $data['yinlian']=0;
-            $data['yibao']=0;
-            $data['dangrizhichu']=0;
-            $data['dabizhichu']=0;
+        $data['zongyeji']=$data['xianjinshouru']+$data['yinlian']+$data['yibao'];
+        
+//      每日收支累计
+        $data['xianjinshouru_sum']=0;
+        $data['yinlian_sum']=0;
+        $data['yibao_sum']=0;
+        $data['dangrizhichu_sum']=0;
+        $data['dabizhichu_sum']=0;
+        if(!empty($menzhen_shouru_every_sum)){
+            foreach($menzhen_shouru_every_sum as $val){
+                $data['xianjinshouru_sum']=$data['xianjinshouru_sum']+$val->xianjinshouru;
+                $data['yinlian_sum']=$data['yinlian_sum']+$val->yinlian;
+                $data['yibao_sum']=$data['yibao_sum']+$val->yibao;
+                $data['dangrizhichu_sum']=$data['dangrizhichu_sum']+$val->dangrizhichu;
+                $data['dabizhichu_sum']=$data['dabizhichu_sum']+$val->dabizhichu;
+                
+            }
+            
         }
+        $data['zongyeji_sum']=$data['xianjinshouru_sum']+$data['yinlian_sum']+$data['yibao_sum'];
+        $data['zhichu_sum']=$data['dangrizhichu_sum']+$data['dabizhichu_sum'];
+        
+
         
 //        var_dump($patients);
         $data['date_every']=$date_every;
@@ -487,6 +977,7 @@ class Patients extends CI_Controller {
     public function menzhen_patients_every_sel(){
         $date_every=$_POST['date_every'];
         $menzhen_shouru_every = $this->patients_m->menzhen_shouru_every_select($date_every);
+        $menzhen_shouru_every_sum = $this->patients_m->menzhen_shouru_every_select_sum($date_every);
         $patients = $this->patients_m->patients_select($date_every);
         
 //      初诊
@@ -798,7 +1289,7 @@ class Patients extends CI_Controller {
         } else {
             $data['zongmenzhen_zhiliao_rate'] = 0;
         }
-        
+
         
 //      手术比
         $data['nanke_shoushu_count']=$this->patients_m->patients_select_shoushu($date_every, '男科');
@@ -855,22 +1346,511 @@ class Patients extends CI_Controller {
         } else {
             $data['zongmenzhen_shoushu_rate'] = 0;
         }
+        
+//      人均
+        if ($data['nanke_chuzhen_count'] != 0) {
+            $data['nanke_renjun'] = $data['nanke_menzhenxiaofei'] / $data['nanke_chuzhen_count'];
+        } else {
+            $data['nanke_renjun'] = 0;
+        }
+        if ($data['waike_chuzhen_count'] != 0) {
+            $data['waike_renjun'] = $data['waike_menzhenxiaofei'] / $data['waike_chuzhen_count'];
+        } else {
+            $data['waike_renjun'] = 0;
+        }
+        if ($data['chanke_chuzhen_count'] != 0) {
+            $data['chanke_renjun'] = $data['chanke_menzhenxiaofei'] / $data['chanke_chuzhen_count'];
+        } else {
+            $data['chanke_renjun'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count'] != 0) {
+            $data['erbihou_renjun'] = $data['erbihou_menzhenxiaofei'] / $data['erbihou_chuzhen_count'];
+        } else {
+            $data['erbihou_renjun'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count'] != 0) {
+            $data['tengtong_renjun'] = $data['tengtong_menzhenxiaofei'] / $data['tengtong_chuzhen_count'];
+        } else {
+            $data['tengtong_renjun'] = 0;
+        }
+        if ($data['qita_chuzhen_count'] != 0) {
+            $data['qita_renjun'] = $data['qita_menzhenxiaofei'] / $data['qita_chuzhen_count'];
+        } else {
+            $data['qita_renjun'] = 0;
+        }
+        if ($data['neike_chuzhen_count'] != 0) {
+            $data['neike_renjun'] = $data['neike_menzhenxiaofei'] / $data['neike_chuzhen_count'];
+        } else {
+            $data['neike_renjun'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count'] != 0) {
+            $data['zhongyi_renjun'] = $data['zhongyi_menzhenxiaofei'] / $data['zhongyi_chuzhen_count'];
+        } else {
+            $data['zhongyi_renjun'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen'] != 0) {
+            $data['zongmenzhen_renjun'] = $data['zongmenzhen_menzhenxiaofei'] / $data['zongmenzhen_chuzhen'];
+        } else {
+            $data['zongmenzhen_renjun'] = 0;
+        }
+        
+        
+//      当月累计
+//      当月累计初诊
+        $data['nanke_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '男科', '初诊');
+        $data['waike_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '外科', '初诊');
+        $data['chanke_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '产科', '初诊');
+        $data['erbihou_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '耳鼻喉', '初诊');
+        $data['tengtong_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '疼痛科', '初诊');
+        $data['qita_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '其他', '初诊');
+        $data['neike_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '内科', '初诊');
+        $data['zhongyi_chuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '中医', '初诊');
+        $data['zongmenzhen_chuzhen_sum'] = $data['nanke_chuzhen_count_sum'] + $data['waike_chuzhen_count_sum'] + $data['chanke_chuzhen_count_sum'] + $data['erbihou_chuzhen_count_sum'] + $data['tengtong_chuzhen_count_sum'] + $data['qita_chuzhen_count_sum'] + $data['neike_chuzhen_count_sum'] + $data['zhongyi_chuzhen_count_sum'];
+//      当月累计复诊
+        $data['nanke_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '男科', '复诊');
+        $data['waike_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '外科', '复诊');
+        $data['chanke_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '产科', '复诊');
+        $data['erbihou_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '耳鼻喉', '复诊');
+        $data['tengtong_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '疼痛科', '复诊');
+        $data['qita_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '其他', '复诊');
+        $data['neike_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '内科', '复诊');
+        $data['zhongyi_fuzhen_count_sum'] = $this->patients_m->patients_select_keshi_sum($date_every, '中医', '复诊');
+        $data['zongmenzhen_fuzhen_sum'] = $data['nanke_fuzhen_count_sum'] + $data['waike_fuzhen_count_sum'] + $data['chanke_fuzhen_count_sum'] + $data['erbihou_fuzhen_count_sum'] + $data['tengtong_fuzhen_count_sum'] + $data['qita_fuzhen_count_sum'] + $data['neike_fuzhen_count_sum'] + $data['zhongyi_fuzhen_count_sum'];
+//      当月累计流失
+        $data['nanke_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '男科');
+        $data['waike_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '外科');
+        $data['chanke_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '产科');
+        $data['erbihou_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '耳鼻喉');
+        $data['tengtong_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '疼痛科');
+        $data['qita_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '其他');
+        $data['neike_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '内科');
+        $data['zhongyi_liushi_count_sum']=$this->patients_m->patients_select_liushi_sum($date_every, '中医');
+        $data['zongmenzhen_liushi_sum'] = $data['nanke_liushi_count_sum'] + $data['waike_liushi_count_sum'] + $data['chanke_liushi_count_sum'] + $data['erbihou_liushi_count_sum'] + $data['tengtong_liushi_count_sum'] + $data['qita_liushi_count_sum'] + $data['neike_liushi_count_sum'] + $data['zhongyi_liushi_count_sum'];
+//      当月累计治疗费
+        $nanke_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '男科');
+        $data['nanke_zhiliaofei_sum']=0;
+        if(!empty($nanke_zhiliaofei_sum)){
+            foreach ($nanke_zhiliaofei_sum as $val){
+            $data['nanke_zhiliaofei_sum']=$data['nanke_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $waike_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '外科');
+        $data['waike_zhiliaofei_sum']=0;
+        if(!empty($waike_zhiliaofei_sum)){
+            foreach ($waike_zhiliaofei_sum as $val){
+            $data['waike_zhiliaofei_sum']=$data['waike_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $chanke_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '产科');
+        $data['chanke_zhiliaofei_sum']=0;
+        if(!empty($chanke_zhiliaofei_sum)){
+            foreach ($chanke_zhiliaofei_sum as $val){
+            $data['chanke_zhiliaofei_sum']=$data['chanke_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $erbihou_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '耳鼻喉');
+        $data['erbihou_zhiliaofei_sum']=0;
+        if(!empty($erbihou_zhiliaofei_sum)){
+            foreach ($erbihou_zhiliaofei_sum as $val){
+            $data['erbihou_zhiliaofei_sum']=$data['erbihou_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $tengtong_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '疼痛科');
+        $data['tengtong_zhiliaofei_sum']=0;
+        if(!empty($tengtong_zhiliaofei_sum)){
+            foreach ($tengtong_zhiliaofei_sum as $val){
+            $data['tengtong_zhiliaofei_sum']=$data['tengtong_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $qita_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '其他');
+        $data['qita_zhiliaofei_sum']=0;
+        if(!empty($qita_zhiliaofei_sum)){
+            foreach ($qita_zhiliaofei_sum as $val){
+            $data['qita_zhiliaofei_sum']=$data['qita_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $neike_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '内科');
+        $data['neike_zhiliaofei_sum']=0;
+        if(!empty($neike_zhiliaofei_sum)){
+            foreach ($neike_zhiliaofei_sum as $val){
+            $data['neike_zhiliaofei_sum']=$data['neike_zhiliaofei_sum']+$val->zhiliaofei;
+        }
+        }
+        $zhongyi_zhiliaofei_sum=$this->patients_m->patients_select_zhiliaofei_sum($date_every, '中医');
+        $data['zhongyi_zhiliaofei_sum']=0;
+        if(!empty($zhongyi_zhiliaofei_sum)){
+            foreach ($zhongyi_zhiliaofei_sum as $val){
+            $data['zhongyi_zhiliaofei_sum']=$data['zhongyi_zhiliaofei_sum']+$val->zhiliaofei;
+            }
+        }
+        $data['zongmenzhen_zhiliaofei_sum'] = $data['nanke_zhiliaofei_sum'] + $data['waike_zhiliaofei_sum'] + $data['chanke_zhiliaofei_sum'] + $data['erbihou_zhiliaofei_sum'] + $data['tengtong_zhiliaofei_sum'] + $data['qita_zhiliaofei_sum'] + $data['neike_zhiliaofei_sum'] + $data['zhongyi_zhiliaofei_sum'];
+        
+//      当月累计手术费
+        $nanke_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '男科');
+        $data['nanke_shoushufei_sum']=0;
+        if(!empty($nanke_shoushufei_sum)){
+            foreach ($nanke_shoushufei_sum as $val){
+            $data['nanke_shoushufei_sum']=$data['nanke_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $waike_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '外科');
+        $data['waike_shoushufei_sum']=0;
+        if(!empty($waike_shoushufei_sum)){
+            foreach ($waike_shoushufei_sum as $val){
+            $data['waike_shoushufei_sum']=$data['waike_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $chanke_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '产科');
+        $data['chanke_shoushufei_sum']=0;
+        if(!empty($chanke_shoushufei_sum)){
+            foreach ($chanke_shoushufei_sum as $val){
+            $data['chanke_shoushufei_sum']=$data['chanke_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $erbihou_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '耳鼻喉');
+        $data['erbihou_shoushufei_sum']=0;
+        if(!empty($erbihou_shoushufei_sum)){
+            foreach ($erbihou_shoushufei_sum as $val){
+            $data['erbihou_shoushufei_sum']=$data['erbihou_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $tengtong_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '疼痛科');
+        $data['tengtong_shoushufei_sum']=0;
+        if(!empty($tengtong_shoushufei_sum)){
+            foreach ($tengtong_shoushufei_sum as $val){
+            $data['tengtong_shoushufei_sum']=$data['tengtong_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $qita_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '其他');
+        $data['qita_shoushufei_sum']=0;
+        if(!empty($qita_shoushufei_sum)){
+            foreach ($qita_shoushufei_sum as $val){
+            $data['qita_shoushufei_sum']=$data['qita_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $neike_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '内科');
+        $data['neike_shoushufei_sum']=0;
+        if(!empty($neike_shoushufei_sum)){
+            foreach ($neike_shoushufei_sum as $val){
+            $data['neike_shoushufei_sum']=$data['neike_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $zhongyi_shoushufei_sum=$this->patients_m->patients_select_shoushufei_sum($date_every, '中医');
+        $data['zhongyi_shoushufei_sum']=0;
+        if(!empty($zhongyi_shoushufei_sum)){
+            foreach ($zhongyi_shoushufei_sum as $val){
+            $data['zhongyi_shoushufei_sum']=$data['zhongyi_shoushufei_sum']+$val->shoushufei;
+            }
+        }
+        $data['zongmenzhen_shoushufei_sum'] = $data['nanke_shoushufei_sum'] + $data['waike_shoushufei_sum'] + $data['chanke_shoushufei_sum'] + $data['erbihou_shoushufei_sum'] + $data['tengtong_shoushufei_sum'] + $data['qita_shoushufei_sum'] + $data['neike_shoushufei_sum'] + $data['zhongyi_shoushufei_sum'];
+        
+//      当月累计门诊消费
+        $nanke_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '男科');
+        $data['nanke_menzhenxiaofei_sum']=0;
+        if(!empty($nanke_menzhenxiaofei_sum)){
+            foreach ($nanke_menzhenxiaofei_sum as $val){
+            $data['nanke_menzhenxiaofei_sum']=$data['nanke_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $waike_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '外科');
+        $data['waike_menzhenxiaofei_sum']=0;
+        if(!empty($waike_menzhenxiaofei_sum)){
+            foreach ($waike_menzhenxiaofei_sum as $val){
+            $data['waike_menzhenxiaofei_sum']=$data['waike_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $chanke_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '产科');
+        $data['chanke_menzhenxiaofei_sum']=0;
+        if(!empty($chanke_menzhenxiaofei_sum)){
+            foreach ($chanke_menzhenxiaofei_sum as $val){
+            $data['chanke_menzhenxiaofei_sum']=$data['chanke_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $erbihou_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '耳鼻喉');
+        $data['erbihou_menzhenxiaofei_sum']=0;
+        if(!empty($erbihou_menzhenxiaofei_sum)){
+            foreach ($erbihou_menzhenxiaofei_sum as $val){
+            $data['erbihou_menzhenxiaofei_sum']=$data['erbihou_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $tengtong_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '疼痛科');
+        $data['tengtong_menzhenxiaofei_sum']=0;
+        if(!empty($tengtong_menzhenxiaofei_sum)){
+            foreach ($tengtong_menzhenxiaofei_sum as $val){
+            $data['tengtong_menzhenxiaofei_sum']=$data['tengtong_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $qita_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '其他');
+        $data['qita_menzhenxiaofei_sum']=0;
+        if(!empty($qita_menzhenxiaofei_sum)){
+            foreach ($qita_menzhenxiaofei_sum as $val){
+            $data['qita_menzhenxiaofei_sum']=$data['qita_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $neike_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '内科');
+        $data['neike_menzhenxiaofei_sum']=0;
+        if(!empty($neike_menzhenxiaofei_sum)){
+            foreach ($neike_menzhenxiaofei_sum as $val){
+            $data['neike_menzhenxiaofei_sum']=$data['neike_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $zhongyi_menzhenxiaofei_sum=$this->patients_m->patients_select_menzhenxiaofei_sum($date_every, '中医');
+        $data['zhongyi_menzhenxiaofei_sum']=0;
+        if(!empty($zhongyi_menzhenxiaofei_sum)){
+            foreach ($zhongyi_menzhenxiaofei_sum as $val){
+            $data['zhongyi_menzhenxiaofei_sum']=$data['zhongyi_menzhenxiaofei_sum']+$val->menzhenxiaofei;
+        }
+        }
+        $data['zongmenzhen_menzhenxiaofei_sum'] = $data['nanke_menzhenxiaofei_sum'] + $data['waike_menzhenxiaofei_sum'] + $data['chanke_menzhenxiaofei_sum'] + $data['erbihou_menzhenxiaofei_sum'] + $data['tengtong_menzhenxiaofei_sum'] + $data['qita_menzhenxiaofei_sum'] + $data['neike_menzhenxiaofei_sum'] + $data['zhongyi_menzhenxiaofei_sum'];
+        
+//      当月累计复诊率
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_fuzhenlv_sum'] = $data['nanke_fuzhen_count_sum'] / $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_fuzhenlv_sum'] = 0;
+        }
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_fuzhenlv_sum'] = $data['waike_fuzhen_count_sum'] / $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_fuzhenlv_sum'] = 0;
+        }
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_fuzhenlv_sum'] = $data['chanke_fuzhen_count_sum'] / $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_fuzhenlv_sum'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_fuzhenlv_sum'] = $data['erbihou_fuzhen_count_sum'] / $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_fuzhenlv_sum'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_fuzhenlv_sum'] = $data['tengtong_fuzhen_count_sum'] / $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_fuzhenlv_sum'] = 0;
+        }
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_fuzhenlv_sum'] = $data['qita_fuzhen_count_sum'] / $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_fuzhenlv_sum'] = 0;
+        }
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_fuzhenlv_sum'] = $data['neike_fuzhen_count_sum'] / $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_fuzhenlv_sum'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_fuzhenlv_sum'] = $data['zhongyi_fuzhen_count_sum'] / $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_fuzhenlv_sum'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_fuzhenlv_sum'] = $data['zongmenzhen_fuzhen_sum'] / $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_fuzhenlv_sum'] = 0;
+        }
+        
+//      当月累计治疗比
+        $data['nanke_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '男科');
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_zhiliao_rate_sum']=$data['nanke_zhiliao_count_sum']/ $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_zhiliao_rate_sum'] = 0;
+        }
+        $data['waike_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '外科');
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_zhiliao_rate_sum']=$data['waike_zhiliao_count_sum']/ $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_zhiliao_rate_sum'] = 0;
+        }
+        $data['chanke_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '产科');
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_zhiliao_rate_sum']=$data['chanke_zhiliao_count_sum']/ $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_zhiliao_rate_sum'] = 0;
+        }
+        $data['erbihou_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '耳鼻喉');
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_zhiliao_rate_sum']=$data['erbihou_zhiliao_count_sum']/ $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_zhiliao_rate_sum'] = 0;
+        }
+        $data['tengtong_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '疼痛科');
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_zhiliao_rate_sum']=$data['tengtong_zhiliao_count_sum']/ $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_zhiliao_rate_sum'] = 0;
+        }
+        $data['qita_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '其他');
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_zhiliao_rate_sum']=$data['qita_zhiliao_count_sum']/ $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_zhiliao_rate_sum'] = 0;
+        }
+        $data['neike_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '内科');
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_zhiliao_rate_sum']=$data['neike_zhiliao_count_sum']/ $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_zhiliao_rate_sum'] = 0;
+        }
+        $data['zhongyi_zhiliao_count_sum']=$this->patients_m->patients_select_zhiliao_sum($date_every, '中医');
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_zhiliao_rate_sum']=$data['zhongyi_zhiliao_count_sum']/ $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_zhiliao_rate_sum'] = 0;
+        }
+        $data['zongmenzhen_zhiliao_sum'] = $data['nanke_zhiliao_count_sum'] + $data['waike_zhiliao_count_sum'] + $data['chanke_zhiliao_count_sum'] + $data['erbihou_zhiliao_count_sum'] + $data['tengtong_zhiliao_count_sum'] + $data['qita_zhiliao_count_sum'] + $data['neike_zhiliao_count_sum'] + $data['zhongyi_zhiliao_count_sum'];
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_zhiliao_rate_sum']=$data['zongmenzhen_zhiliao_sum']/ $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_zhiliao_rate_sum'] = 0;
+        }
 
-//        var_dump($shouru_every);
+        
+//      当月累计手术比
+        $data['nanke_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '男科');
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_shoushu_rate_sum']=$data['nanke_shoushu_count_sum']/ $data['nanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['nanke_shoushu_rate_sum'] = 0;
+        }
+        $data['waike_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '外科');
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_shoushu_rate_sum']=$data['waike_shoushu_count_sum']/ $data['waike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['waike_shoushu_rate_sum'] = 0;
+        }
+        $data['chanke_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '产科');
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_shoushu_rate_sum']=$data['chanke_shoushu_count_sum']/ $data['chanke_chuzhen_count_sum'] * 100;
+        } else {
+            $data['chanke_shoushu_rate_sum'] = 0;
+        }
+        $data['erbihou_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '耳鼻喉');
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_shoushu_rate_sum']=$data['erbihou_shoushu_count_sum']/ $data['erbihou_chuzhen_count_sum'] * 100;
+        } else {
+            $data['erbihou_shoushu_rate_sum'] = 0;
+        }
+        $data['tengtong_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '疼痛科');
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_shoushu_rate_sum']=$data['tengtong_shoushu_count_sum']/ $data['tengtong_chuzhen_count_sum'] * 100;
+        } else {
+            $data['tengtong_shoushu_rate_sum'] = 0;
+        }
+        $data['qita_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '其他');
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_shoushu_rate_sum']=$data['qita_shoushu_count_sum']/ $data['qita_chuzhen_count_sum'] * 100;
+        } else {
+            $data['qita_shoushu_rate_sum'] = 0;
+        }
+        $data['neike_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '内科');
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_shoushu_rate_sum']=$data['neike_shoushu_count_sum']/ $data['neike_chuzhen_count_sum'] * 100;
+        } else {
+            $data['neike_shoushu_rate_sum'] = 0;
+        }
+        $data['zhongyi_shoushu_count_sum']=$this->patients_m->patients_select_shoushu_sum($date_every, '中医');
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_shoushu_rate_sum']=$data['zhongyi_shoushu_count_sum']/ $data['zhongyi_chuzhen_count_sum'] * 100;
+        } else {
+            $data['zhongyi_shoushu_rate_sum'] = 0;
+        }
+        $data['zongmenzhen_shoushu_sum'] = $data['nanke_shoushu_count_sum'] + $data['waike_shoushu_count_sum'] + $data['chanke_shoushu_count_sum'] + $data['erbihou_shoushu_count_sum'] + $data['tengtong_shoushu_count_sum'] + $data['qita_shoushu_count_sum'] + $data['neike_shoushu_count_sum'] + $data['zhongyi_shoushu_count_sum'];
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_shoushu_rate_sum']=$data['zongmenzhen_shoushu_sum']/ $data['zongmenzhen_chuzhen_sum'] * 100;
+        } else {
+            $data['zongmenzhen_shoushu_rate_sum'] = 0;
+        }
+        
+//      当月累计人均
+        if ($data['nanke_chuzhen_count_sum'] != 0) {
+            $data['nanke_renjun_sum'] = $data['nanke_menzhenxiaofei_sum'] / $data['nanke_chuzhen_count_sum'];
+        } else {
+            $data['nanke_renjun_sum'] = 0;
+        }
+        if ($data['waike_chuzhen_count_sum'] != 0) {
+            $data['waike_renjun_sum'] = $data['waike_menzhenxiaofei_sum'] / $data['waike_chuzhen_count_sum'];
+        } else {
+            $data['waike_renjun_sum'] = 0;
+        }
+        if ($data['chanke_chuzhen_count_sum'] != 0) {
+            $data['chanke_renjun_sum'] = $data['chanke_menzhenxiaofei_sum'] / $data['chanke_chuzhen_count_sum'];
+        } else {
+            $data['chanke_renjun_sum'] = 0;
+        }
+        if ($data['erbihou_chuzhen_count_sum'] != 0) {
+            $data['erbihou_renjun_sum'] = $data['erbihou_menzhenxiaofei_sum'] / $data['erbihou_chuzhen_count_sum'];
+        } else {
+            $data['erbihou_renjun_sum'] = 0;
+        }
+        if ($data['tengtong_chuzhen_count_sum'] != 0) {
+            $data['tengtong_renjun_sum'] = $data['tengtong_menzhenxiaofei_sum'] / $data['tengtong_chuzhen_count_sum'];
+        } else {
+            $data['tengtong_renjun_sum'] = 0;
+        }
+        if ($data['qita_chuzhen_count_sum'] != 0) {
+            $data['qita_renjun_sum'] = $data['qita_menzhenxiaofei_sum'] / $data['qita_chuzhen_count_sum'];
+        } else {
+            $data['qita_renjun_sum'] = 0;
+        }
+        if ($data['neike_chuzhen_count_sum'] != 0) {
+            $data['neike_renjun_sum'] = $data['neike_menzhenxiaofei_sum'] / $data['neike_chuzhen_count_sum'];
+        } else {
+            $data['neike_renjun_sum'] = 0;
+        }
+        if ($data['zhongyi_chuzhen_count_sum'] != 0) {
+            $data['zhongyi_renjun_sum'] = $data['zhongyi_menzhenxiaofei_sum'] / $data['zhongyi_chuzhen_count_sum'];
+        } else {
+            $data['zhongyi_renjun_sum'] = 0;
+        }
+        if ($data['zongmenzhen_chuzhen_sum'] != 0) {
+            $data['zongmenzhen_renjun_sum'] = $data['zongmenzhen_menzhenxiaofei_sum'] / $data['zongmenzhen_chuzhen_sum'];
+        } else {
+            $data['zongmenzhen_renjun_sum'] = 0;
+        }
+        
+        
+//      每日收支
+        $data['xianjinshouru']=0;
+        $data['yinlian']=0;
+        $data['yibao']=0;
+        $data['dangrizhichu']=0;
+        $data['dabizhichu']=0;
         if(!empty($menzhen_shouru_every)){
             foreach($menzhen_shouru_every as $val){
+                $data['xianjinshouru']=$val->xianjinshouru;
                 $data['yinlian']=$val->yinlian;
                 $data['yibao']=$val->yibao;
                 $data['dangrizhichu']=$val->dangrizhichu;
                 $data['dabizhichu']=$val->dabizhichu;
+                
             }
+            
         }
-        else{
-            $data['yinlian']=0;
-            $data['yibao']=0;
-            $data['dangrizhichu']=0;
-            $data['dabizhichu']=0;
+        $data['zongyeji']=$data['xianjinshouru']+$data['yinlian']+$data['yibao'];
+        
+//      每日收支累计
+        $data['xianjinshouru_sum']=0;
+        $data['yinlian_sum']=0;
+        $data['yibao_sum']=0;
+        $data['dangrizhichu_sum']=0;
+        $data['dabizhichu_sum']=0;
+        if(!empty($menzhen_shouru_every_sum)){
+            foreach($menzhen_shouru_every_sum as $val){
+                $data['xianjinshouru_sum']=$data['xianjinshouru_sum']+$val->xianjinshouru;
+                $data['yinlian_sum']=$data['yinlian_sum']+$val->yinlian;
+                $data['yibao_sum']=$data['yibao_sum']+$val->yibao;
+                $data['dangrizhichu_sum']=$data['dangrizhichu_sum']+$val->dangrizhichu;
+                $data['dabizhichu_sum']=$data['dabizhichu_sum']+$val->dabizhichu;
+                
+            }
+            
         }
+        $data['zongyeji_sum']=$data['xianjinshouru_sum']+$data['yinlian_sum']+$data['yibao_sum'];
+        $data['zhichu_sum']=$data['dangrizhichu_sum']+$data['dabizhichu_sum'];
+        
+
         
 //        var_dump($patients);
         $data['date_every']=$date_every;

@@ -37,15 +37,15 @@
                 <tr align="center">
                     <td colspan="2" align="center"><?php echo $date_every ?></td>
                     <td>总业绩</td>
-                    <td><?php echo '0' ?></td>
+                    <td><?php echo $zongyeji ?></td>
                     <td span>现金收入</td>
-                    <td span><?php echo '0' ?></td>
+                    <td span><?php echo $xianjinshouru ?></td>
                     <td span>银联</td>
                     <td span><?php echo $yinlian ?></input></td>
                     <td span>医保</td>
                     <td span><?php echo $yibao ?></td>
                     <td>累计业绩</td>
-                    <td><?php echo '0' ?></td>
+                    <td><?php echo $zongyeji_sum ?></td>
                 </tr>
                 <tr>
                     <td  rowspan="12" align="center" span="1" width="1%">当日门诊</td>
@@ -73,7 +73,7 @@
                     <td><?php echo $nanke_fuzhenlv ?>%</td>
                     <td><?php echo $nanke_zhiliao_rate ?>%</td>
                     <td><?php echo $nanke_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $nanke_renjun ?></td>
                 </tr>
                 <tr>
                     <td>外科</td>
@@ -86,7 +86,7 @@
                     <td><?php echo $waike_fuzhenlv ?>%</td>
                     <td><?php echo $waike_zhiliao_rate ?>%</td>
                     <td><?php echo $waike_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $waike_renjun ?></td>
                 </tr>
                 <tr>
                     <td>妇科2</td>
@@ -125,7 +125,7 @@
                     <td><?php echo $chanke_fuzhenlv ?>%</td>
                     <td><?php echo $chanke_zhiliao_rate ?>%</td>
                     <td><?php echo $chanke_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $chanke_renjun ?></td>
                 </tr>
                 <tr>
                     <td>耳鼻喉科</td>
@@ -138,7 +138,7 @@
                     <td><?php echo $erbihou_fuzhenlv ?>%</td>
                     <td><?php echo $erbihou_zhiliao_rate ?>%</td>
                     <td><?php echo $erbihou_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $erbihou_renjun ?></td>
                 </tr>
                 <tr>
                     <td>理疗科</td>
@@ -151,7 +151,7 @@
                     <td><?php echo $tengtong_fuzhenlv ?>%</td>
                     <td><?php echo $tengtong_zhiliao_rate ?>%</td>
                     <td><?php echo $tengtong_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $tengtong_renjun ?></td>
                 </tr>
                 <tr>
                     <td>其他</td>
@@ -164,7 +164,7 @@
                     <td><?php echo $qita_fuzhenlv ?>%</td>
                     <td><?php echo $qita_zhiliao_rate ?>%</td>
                     <td><?php echo $qita_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $qita_renjun ?></td>
                 </tr>
                 <tr>
                     <td>内科</td>
@@ -177,7 +177,7 @@
                     <td><?php echo $neike_fuzhenlv ?>%</td>
                     <td><?php echo $neike_zhiliao_rate ?>%</td>
                     <td><?php echo $neike_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $neike_renjun ?></td>
                 </tr>
                 <tr>
                     <td>中医科</td>
@@ -190,7 +190,7 @@
                     <td><?php echo $zhongyi_fuzhenlv ?>%</td>
                     <td><?php echo $zhongyi_zhiliao_rate ?>%</td>
                     <td><?php echo $zhongyi_shoushu_rate ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zhongyi_renjun ?></td>
                 </tr>
                 <tr>
                     <td>总门诊</td>
@@ -203,34 +203,34 @@
                     <td><?php echo sprintf("%.2f", $zongmenzhen_fuzhenlv) ?>%</td>
                     <td><?php echo sprintf("%.2f", $zongmenzhen_zhiliao_rate) ?>%</td>
                     <td><?php echo sprintf("%.2f", $zongmenzhen_shoushu_rate) ?>%</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_renjun) ?></td>
                 </tr>
                 <tr>
                     <td  rowspan="11" align="center" span="1">当月累计门诊</td>
                     <td>男科</td>
-                    <td><?php echo $nanke_chuzhen_count ?></td>
-                    <td><?php echo $nanke_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $nanke_chuzhen_count_sum ?></td>
+                    <td><?php echo $nanke_fuzhen_count_sum ?></td>
+                    <td><?php echo $nanke_liushi_count_sum ?></td>
+                    <td><?php echo $nanke_zhiliaofei_sum ?></td>
+                    <td><?php echo $nanke_shoushufei_sum ?></td>
+                    <td><?php echo $nanke_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $nanke_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $nanke_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $nanke_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $nanke_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>外科</td>
-                    <td><?php echo $waike_chuzhen_count ?></td>
-                    <td><?php echo $waike_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $waike_chuzhen_count_sum ?></td>
+                    <td><?php echo $waike_fuzhen_count_sum ?></td>
+                    <td><?php echo $waike_liushi_count_sum ?></td>
+                    <td><?php echo $waike_zhiliaofei_sum ?></td>
+                    <td><?php echo $waike_shoushufei_sum ?></td>
+                    <td><?php echo $waike_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $waike_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $waike_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $waike_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $waike_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>妇科2</td>
@@ -240,7 +240,7 @@
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo 0 ?>%</td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
@@ -253,101 +253,101 @@
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo 0 ?>%</td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                     <td><?php echo 0 ?></td>
                 </tr>
                 <tr>
                     <td>产科</td>
-                    <td><?php echo $chanke_chuzhen_count ?></td>
-                    <td><?php echo $chanke_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $chanke_chuzhen_count_sum ?></td>
+                    <td><?php echo $chanke_fuzhen_count_sum ?></td>
+                    <td><?php echo $chanke_liushi_count_sum ?></td>
+                    <td><?php echo $chanke_zhiliaofei_sum ?></td>
+                    <td><?php echo $chanke_shoushufei_sum ?></td>
+                    <td><?php echo $chanke_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $chanke_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $chanke_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $chanke_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $chanke_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>耳鼻喉科</td>
-                    <td><?php echo $erbihou_chuzhen_count ?></td>
-                    <td><?php echo $erbihou_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $erbihou_chuzhen_count_sum ?></td>
+                    <td><?php echo $erbihou_fuzhen_count_sum ?></td>
+                    <td><?php echo $erbihou_liushi_count_sum ?></td>
+                    <td><?php echo $erbihou_zhiliaofei_sum ?></td>
+                    <td><?php echo $erbihou_shoushufei_sum ?></td>
+                    <td><?php echo $erbihou_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $erbihou_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $erbihou_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $erbihou_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $erbihou_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>理疗科</td>
-                    <td><?php echo $tengtong_chuzhen_count ?></td>
-                    <td><?php echo $tengtong_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $tengtong_chuzhen_count_sum ?></td>
+                    <td><?php echo $tengtong_fuzhen_count_sum ?></td>
+                    <td><?php echo $tengtong_liushi_count_sum ?></td>
+                    <td><?php echo $tengtong_zhiliaofei_sum ?></td>
+                    <td><?php echo $tengtong_shoushufei_sum ?></td>
+                    <td><?php echo $tengtong_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $tengtong_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $tengtong_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $tengtong_shoushu_rate_sum?>%</td>
+                    <td><?php echo $tengtong_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>其他</td>
-                    <td><?php echo $qita_chuzhen_count ?></td>
-                    <td><?php echo $qita_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $qita_chuzhen_count_sum ?></td>
+                    <td><?php echo $qita_fuzhen_count_sum ?></td>
+                    <td><?php echo $qita_liushi_count_sum ?></td>
+                    <td><?php echo $qita_zhiliaofei_sum ?></td>
+                    <td><?php echo $qita_shoushufei_sum ?></td>
+                    <td><?php echo $qita_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $qita_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $qita_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $qita_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $qita_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>内科</td>
-                    <td><?php echo $neike_chuzhen_count ?></td>
-                    <td><?php echo $neike_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $neike_chuzhen_count_sum ?></td>
+                    <td><?php echo $neike_fuzhen_count_sum ?></td>
+                    <td><?php echo $neike_liushi_count_sum ?></td>
+                    <td><?php echo $neike_zhiliaofei_sum ?></td>
+                    <td><?php echo $neike_shoushufei_sum ?></td>
+                    <td><?php echo $neike_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $neike_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $neike_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $neike_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $neike_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>中医科</td>
-                    <td><?php echo $zhongyi_chuzhen_count ?></td>
-                    <td><?php echo $zhongyi_fuzhen_count ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zhongyi_chuzhen_count_sum ?></td>
+                    <td><?php echo $zhongyi_fuzhen_count_sum ?></td>
+                    <td><?php echo $zhongyi_liushi_count_sum ?></td>
+                    <td><?php echo $zhongyi_zhiliaofei_sum ?></td>
+                    <td><?php echo $zhongyi_shoushufei_sum ?></td>
+                    <td><?php echo $zhongyi_menzhenxiaofei_sum ?></td>
+                    <td><?php echo $zhongyi_fuzhenlv_sum ?>%</td>
+                    <td><?php echo $zhongyi_zhiliao_rate_sum ?>%</td>
+                    <td><?php echo $zhongyi_shoushu_rate_sum ?>%</td>
+                    <td><?php echo $zhongyi_renjun_sum ?></td>
                 </tr>
                 <tr>
                     <td>总门诊</td>
-                    <td><?php echo $zongmenzhen_chuzhen ?></td>
-                    <td><?php echo $zongmenzhen_fuzhen ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zongmenzhen_chuzhen_sum ?></td>
+                    <td><?php echo $zongmenzhen_fuzhen_sum ?></td>
+                    <td><?php echo $zongmenzhen_liushi_sum ?></td>
+                    <td><?php echo $zongmenzhen_zhiliaofei_sum ?></td>
+                    <td><?php echo $zongmenzhen_shoushufei_sum ?></td>
+                    <td><?php echo $zongmenzhen_menzhenxiaofei_sum ?></td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_fuzhenlv_sum) ?>%</td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_zhiliao_rate_sum) ?>%</td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_shoushu_rate_sum) ?>%</td>
+                    <td><?php echo sprintf("%.2f", $zongmenzhen_renjun_sum) ?></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">当日支出</td>
@@ -355,7 +355,7 @@
                     <td colspan="2" align="center">大笔支出</td>
                     <td><?php echo $dabizhichu ?></td>
                     <td colspan="2" align="center">累计支出</td>
-                    <td><?php echo 0 ?></td>
+                    <td><?php echo $zhichu_sum ?></td>
                     <td colspan="2" align="center">累计余额</td>
                     <td><?php echo 0 ?></td>
                 </tr>

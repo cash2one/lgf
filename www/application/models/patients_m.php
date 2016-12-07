@@ -41,9 +41,18 @@ class patients_m extends CI_Model {
         return $query->result();
     }
     
-    function menzhen_shouru_every_select($riqi){
+    function menzhen_shouru_every_select($date){
         $this->db->select('*');
-        $this->db->where('riqi',$riqi);
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('menzhen_shouru_every');
+        return $query->result();
+    }
+    
+    function menzhen_shouru_every_select_sum($date){
+        $this->db->select('*');
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
         $query = $this->db->get('menzhen_shouru_every');
         return $query->result();
     }
@@ -63,9 +72,30 @@ class patients_m extends CI_Model {
         return $query;
     }
     
+    function patients_select_keshi_sum($date,$keshi,$chufuzhen){
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('chufuzhen',$chufuzhen);
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
     function patients_select_liushi($date,$keshi){
         $liushi=array('初诊流失','复诊流失');
         $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where_in('liushi',$liushi);
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
+    function patients_select_liushi_sum($date,$keshi){
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $liushi=array('初诊流失','复诊流失');
         $this->db->where('keshi',$keshi);
         $this->db->where_in('liushi',$liushi);
         $query=$this->db->count_all_results('patients_ic');
@@ -80,9 +110,29 @@ class patients_m extends CI_Model {
         return $query->result();
     }
     
+    function patients_select_zhiliaofei_sum($date,$keshi){
+        $this->db->select_sum('zhiliaofei');
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
     function patients_select_shoushufei($date,$keshi){
         $this->db->select('shoushufei');
         $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
+    function patients_select_shoushufei_sum($date,$keshi){
+        $this->db->select('shoushufei');
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
         $this->db->where('keshi',$keshi);
         $query = $this->db->get('patients_ic');
         return $query->result();
@@ -96,6 +146,16 @@ class patients_m extends CI_Model {
         return $query->result();
     }
     
+    function patients_select_menzhenxiaofei_sum($date,$keshi){
+        $this->db->select('menzhenxiaofei');
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $this->db->where('keshi',$keshi);
+        $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
     function patients_select_zhiliao($date,$keshi){
         $this->db->where('riqi',$date);
         $this->db->where('keshi',$keshi);
@@ -104,8 +164,28 @@ class patients_m extends CI_Model {
         return $query;
     }
     
+    function patients_select_zhiliao_sum($date,$keshi){
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('zhiliao','是');
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
     function patients_select_shoushu($date,$keshi){
         $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('shoushu','是');
+        $query=$this->db->count_all_results('patients_ic');
+        return $query;
+    }
+    
+    function patients_select_shoushu_sum($date,$keshi){
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
         $this->db->where('keshi',$keshi);
         $this->db->where('shoushu','是');
         $query=$this->db->count_all_results('patients_ic');
