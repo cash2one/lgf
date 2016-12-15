@@ -25,6 +25,18 @@ class Data_add extends CI_Controller {
         $this->load->view('jiuizhen_index_v',$data);
     }
     
+    public function ruyuan_index() {
+        session_start();
+        $data['yiyuan']=$_SESSION['company'];
+        $this->load->view('ruyuan_index_v',$data);
+    }
+    
+    public function chuyuan_index() {
+        session_start();
+        $data['yiyuan']=$_SESSION['company'];
+        $this->load->view('chuyuan_index_v',$data);
+    }
+    
     public function date_gen_index() {
 
         $this->load->view('date_gen');

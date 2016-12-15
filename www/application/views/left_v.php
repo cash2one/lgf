@@ -202,6 +202,21 @@
                             <td ><a class=menuchild 
                                    href="<?php echo base_url().'index.php/data_add/jiuzhen_index' ?>" 
                                    target=right>就诊录入</a></td></tr>
+                        
+                        <tr height=20>
+                            <td align=middle width=30><img height=9 
+                                                           src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
+                            <td ><a class=menuchild 
+                                   href="<?php echo base_url().'index.php/data_add/ruyuan_index' ?>" 
+                                   target=right>入院录入</a></td></tr>
+                        
+                        <tr height=20>
+                            <td align=middle width=30><img height=9 
+                                                           src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
+                            <td ><a class=menuchild 
+                                   href="<?php echo base_url().'index.php/data_add/chuyuan_index' ?>" 
+                                   target=right>出院录入</a></td></tr>
+                        
                         <tr height=20>
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>

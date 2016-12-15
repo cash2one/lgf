@@ -10,8 +10,7 @@ class Login extends CI_Controller {
         $this->load->model('sys_manager_m');
     }
 
-    public function index()
-    {
+    public function index(){
         //$this->load->view('login_v',array('cap'=>$cap['image']));
         $this->load->view('login_v');
     }

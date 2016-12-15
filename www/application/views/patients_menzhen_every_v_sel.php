@@ -18,7 +18,7 @@
 
     </head>
     <body id="userlogin_body">
-        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/patients/patients_every_sel' ?>" method="post">
+        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/patients/patients_every_sel1' ?>" method="post">
             <table>
                 <tr>
                     <td>日期：</td>
