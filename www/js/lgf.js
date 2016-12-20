@@ -159,75 +159,75 @@ function delrow() {
     tb.deleteRow(i - 1);
 }
 function addrow(yiyuan) {
-var i = tb.rows.length-1;
-var tr = document.createElement('tr');
-        td1 = document.createElement('td');
-        td1.innerHTML = '<input type="text" name="yiyuan'+i+'" value="'+yiyuan+'" readonly="readonly"/>';
-        tr.appendChild(td1);
+    var i = tb.rows.length - 1;
+    var tr = document.createElement('tr');
+    td1 = document.createElement('td');
+    td1.innerHTML = '<input type="text" name="yiyuan' + i + '" value="' + yiyuan + '" readonly="readonly"/>';
+    tr.appendChild(td1);
 
-        td2 = document.createElement('td');
-        td2.innerHTML = '<select id="jiuzhen_parent'+i+'" name="chufuzhen'+i+'" onchange="jiuzhen_clickOpt(this.id)"><option value="1">初诊</option><option value="2">复诊</option></select>';
-        tr.appendChild(td2);
+    td2 = document.createElement('td');
+    td2.innerHTML = '<select id="jiuzhen_parent' + i + '" name="chufuzhen' + i + '" onchange="jiuzhen_clickOpt(this.id)"><option value="1">初诊</option><option value="2">复诊</option></select>';
+    tr.appendChild(td2);
 
-        td3 = document.createElement('td');
-        td3.innerHTML = '<select id="jiuzhen_child'+i+'" name="liushi'+i+'"><option value="0"></option><option value="1">初诊流失</option><option value="2">复诊流失</option></select>';
-        tr.appendChild(td3);
+    td3 = document.createElement('td');
+    td3.innerHTML = '<select id="jiuzhen_child' + i + '" name="liushi' + i + '"><option value="0"></option><option value="1">初诊流失</option><option value="2">复诊流失</option></select>';
+    tr.appendChild(td3);
 
-        td4 = document.createElement('td');
-        td4.innerHTML = '<select id="keshi_parent'+i+'" name="keshi'+i+'" onchange="keshi_clickOpt(this.id)"><option value="1">内科</option><option value="2">外科</option><option value="3">男科</option><option value="4">妇科</option><option value="5">产科</option><option value="6">耳鼻喉</option><option value="7">疼痛科</option><option value="8">中医</option><option value="9">其他</option></select>';
-        tr.appendChild(td4);
+    td4 = document.createElement('td');
+    td4.innerHTML = '<select id="keshi_parent' + i + '" name="keshi' + i + '" onchange="keshi_clickOpt(this.id)"><option value="1">内科</option><option value="2">外科</option><option value="3">男科</option><option value="4">妇科</option><option value="5">产科</option><option value="6">耳鼻喉</option><option value="7">疼痛科</option><option value="8">中医</option><option value="9">其他</option></select>';
+    tr.appendChild(td4);
 
-        td5 = document.createElement('td');
-        td5.innerHTML = '<select id="zhenshi_child'+i+'" name="zhenshi'+i+'"><option></option></select>';
-        tr.appendChild(td5);
+    td5 = document.createElement('td');
+    td5.innerHTML = '<select id="zhenshi_child' + i + '" name="zhenshi' + i + '"><option></option></select>';
+    tr.appendChild(td5);
 
-        td6 = document.createElement('td');
-        td6.innerHTML = '<select id="bingzhong_child'+i+'" name="bingzhong'+i+'"><option value="1">感冒</option><option value="2">胃炎</option><option value="3">支气管炎</option><option value="4">冠/肺心病</option><option value="5">三高</option><option value="6">糖尿病</option><option value="7">腹泻</option><option value="8">脑A/硬化供血不足</option><option value="9">其他</option><option value="10">体检</option></select>';
-        tr.appendChild(td6);
+    td6 = document.createElement('td');
+    td6.innerHTML = '<select id="bingzhong_child' + i + '" name="bingzhong' + i + '"><option value="1">感冒</option><option value="2">胃炎</option><option value="3">支气管炎</option><option value="4">冠/肺心病</option><option value="5">三高</option><option value="6">糖尿病</option><option value="7">腹泻</option><option value="8">脑A/硬化供血不足</option><option value="9">其他</option><option value="10">体检</option></select>';
+    tr.appendChild(td6);
 
-        td7 = document.createElement('td');
+    td7 = document.createElement('td');
 
-        td7.innerHTML = '<select name="laiyuanqudao'+i+'" id="laiyuanqudao'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
+    td7.innerHTML = '<select name="laiyuanqudao' + i + '" id="laiyuanqudao' + i + '"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
 //        td7.innerHTML = '<select name="laiyuan'+i+'" id="laiyuan'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
-        tr.appendChild(td7);
+    tr.appendChild(td7);
 
-        td8 = document.createElement('td');
-        td8.innerHTML = '<input type="text" size="4" name="nianling'+i+'" id="nianling'+i+'" value="0"/>';
-        tr.appendChild(td8);
+    td8 = document.createElement('td');
+    td8.innerHTML = '<input type="text" size="4" name="nianling' + i + '" id="nianling' + i + '" value="0"/>';
+    tr.appendChild(td8);
 
-        td9 = document.createElement('td');
-        td9.innerHTML = '<select name="xingbie'+i+'" id="xingbie'+i+'"><option>男</option><option selected>女</option></select>';
-        tr.appendChild(td9);
+    td9 = document.createElement('td');
+    td9.innerHTML = '<select name="xingbie' + i + '" id="xingbie' + i + '"><option>男</option><option selected>女</option></select>';
+    tr.appendChild(td9);
 
-        td10 = document.createElement('td');
-        td10.innerHTML = '<select name="quyu'+i+'" id="quyu'+i+'"><option>县城</option><option>广顺</option><option>杜家坝</option></select>';
-        tr.appendChild(td10);
+    td10 = document.createElement('td');
+    td10.innerHTML = '<select name="quyu' + i + '" id="quyu' + i + '"><option>县城</option><option>广顺</option><option>杜家坝</option></select>';
+    tr.appendChild(td10);
 
-        td11 = document.createElement('td');
-        td11.innerHTML = '<select name="shouzhuyuan'+i+'" id="shouzhuyuan'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td11);
+    td11 = document.createElement('td');
+    td11.innerHTML = '<select name="shouzhuyuan' + i + '" id="shouzhuyuan' + i + '"><option>是</option><option selected="selected">否</option></select>';
+    tr.appendChild(td11);
 
-        td12 = document.createElement('td');
-        td12.innerHTML = '<select name="zhiliao'+i+'" id="zhiliao'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td12);
+    td12 = document.createElement('td');
+    td12.innerHTML = '<select name="zhiliao' + i + '" id="zhiliao' + i + '"><option>是</option><option selected="selected">否</option></select>';
+    tr.appendChild(td12);
 
-        td13 = document.createElement('td');
-        td13.innerHTML = '<input type="text" size="8" name="zhiliaofei'+i+'" id="zhiliaofei'+i+'" value="0"/>';
-        tr.appendChild(td13);
+    td13 = document.createElement('td');
+    td13.innerHTML = '<input type="text" size="8" name="zhiliaofei' + i + '" id="zhiliaofei' + i + '" value="0"/>';
+    tr.appendChild(td13);
 
-        td14 = document.createElement('td');
-        td14.innerHTML = '<select name="shoushu'+i+'" id="shoushu'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td14);
+    td14 = document.createElement('td');
+    td14.innerHTML = '<select name="shoushu' + i + '" id="shoushu' + i + '"><option>是</option><option selected="selected">否</option></select>';
+    tr.appendChild(td14);
 
-        td15 = document.createElement('td');
-        td15.innerHTML = '<input type="text" size="8" name="shoushufei'+i+'" id="shoushufei'+i+'" value="0" />';
-        tr.appendChild(td15);
+    td15 = document.createElement('td');
+    td15.innerHTML = '<input type="text" size="8" name="shoushufei' + i + '" id="shoushufei' + i + '" value="0" />';
+    tr.appendChild(td15);
 
-        td16 = document.createElement('td');
-        td16.innerHTML = '<input type="text" size="8" name="menzhenxiaofei'+i+'" id="menzhenxiaofei'+i+'" value="0" />';
-        tr.appendChild(td16);
+    td16 = document.createElement('td');
+    td16.innerHTML = '<input type="text" size="8" name="menzhenxiaofei' + i + '" id="menzhenxiaofei' + i + '" value="0" />';
+    tr.appendChild(td16);
 
-tb.tBodies[0].appendChild(tr);
+    tb.tBodies[0].appendChild(tr);
 }
 
 
@@ -238,75 +238,56 @@ function delrow() {
     if(i>2)
     tb.deleteRow(i - 1);
 }
-function addrow(yiyuan) {
-var i = tb.rows.length-1;
-var tr = document.createElement('tr');
-        td1 = document.createElement('td');
-        td1.innerHTML = '<input type="text" name="yiyuan'+i+'" value="'+yiyuan+'" readonly="readonly"/>';
-        tr.appendChild(td1);
+function addrow1(yiyuan) {
+    alert(1);
+    var i = tb.rows.length - 1;
+    var tr = document.createElement('tr');
+    
+    td1 = document.createElement('td');
+    td1.innerHTML = '<input type="text" name="hospitalization_id' + i + '" value="hospitalization_id" '+ i + '/>';
+    tr.appendChild(td1);
+    
+    td2 = document.createElement('td');
+    td2.innerHTML = '<input type="text" name="yiyuan' + i + '" value="' + yiyuan + '" readonly="readonly"/>';
+    tr.appendChild(td2);
+    
+    td3 = document.createElement('td');
+    td3.innerHTML = '<input type="text" name="name' + i + '" value="name' + i + '"/>';
+    tr.appendChild(td3);
 
-        td2 = document.createElement('td');
-        td2.innerHTML = '<select id="jiuzhen_parent'+i+'" name="chufuzhen'+i+'" onchange="jiuzhen_clickOpt(this.id)"><option value="1">初诊</option><option value="2">复诊</option></select>';
-        tr.appendChild(td2);
-
-        td3 = document.createElement('td');
-        td3.innerHTML = '<select id="jiuzhen_child'+i+'" name="liushi'+i+'"><option value="0"></option><option value="1">初诊流失</option><option value="2">复诊流失</option></select>';
-        tr.appendChild(td3);
-
-        td4 = document.createElement('td');
-        td4.innerHTML = '<select id="keshi_parent'+i+'" name="keshi'+i+'" onchange="keshi_clickOpt(this.id)"><option value="1">内科</option><option value="2">外科</option><option value="3">男科</option><option value="4">妇科</option><option value="5">产科</option><option value="6">耳鼻喉</option><option value="7">疼痛科</option><option value="8">中医</option><option value="9">其他</option></select>';
-        tr.appendChild(td4);
-
-        td5 = document.createElement('td');
-        td5.innerHTML = '<select id="zhenshi_child'+i+'" name="zhenshi'+i+'"><option></option></select>';
-        tr.appendChild(td5);
-
-        td6 = document.createElement('td');
-        td6.innerHTML = '<select id="bingzhong_child'+i+'" name="bingzhong'+i+'"><option value="1">感冒</option><option value="2">胃炎</option><option value="3">支气管炎</option><option value="4">冠/肺心病</option><option value="5">三高</option><option value="6">糖尿病</option><option value="7">腹泻</option><option value="8">脑A/硬化供血不足</option><option value="9">其他</option><option value="10">体检</option></select>';
-        tr.appendChild(td6);
-
-        td7 = document.createElement('td');
-
-        td7.innerHTML = '<select name="laiyuanqudao'+i+'" id="laiyuanqudao'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
+    td4 = document.createElement('td');
+    td4.innerHTML = '<input type="text" size="4" name="nianling' + i + '" id="nianling' + i + '" value="0"/>';
+    tr.appendChild(td4);
+    
+    td5 = document.createElement('td');
+    td5.innerHTML = '<select name="xingbie' + i + '" id="xingbie' + i + '"><option>男</option><option selected>女</option></select>';
+    tr.appendChild(td5);
+    
+    td6 = document.createElement('td');
+    td6.innerHTML = '<select id="keshi_parent' + i + '" name="keshi' + i + '" onchange="keshi_clickOpt(this.id)"><option value="1">内科</option><option value="2">外科</option><option value="3">男科</option><option value="4">妇科</option><option value="5">产科</option><option value="6">耳鼻喉</option><option value="7">疼痛科</option><option value="8">中医</option><option value="9">其他</option></select>';
+    tr.appendChild(td6);
+    
+    td7 = document.createElement('td');
+    td7.innerHTML = '<select name="laiyuanqudao' + i + '" id="laiyuanqudao' + i + '"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
 //        td7.innerHTML = '<select name="laiyuan'+i+'" id="laiyuan'+i+'"><option>网络</option><option>电话</option><option>QQ</option><option>杂志</option><option>市场</option><option>持卡</option><option>路过</option><option>附近</option><option>介绍</option><option>来过</option><option>会员证</option></select>';
-        tr.appendChild(td7);
+    tr.appendChild(td7);
 
-        td8 = document.createElement('td');
-        td8.innerHTML = '<input type="text" size="4" name="nianling'+i+'" id="nianling'+i+'" value="0"/>';
-        tr.appendChild(td8);
+    td8 = document.createElement('td');
+    td8.innerHTML = '<select name="quyu' + i + '" id="quyu' + i + '"><option>县城</option><option>广顺</option><option>杜家坝</option></select>';
+    tr.appendChild(td8);
 
-        td9 = document.createElement('td');
-        td9.innerHTML = '<select name="xingbie'+i+'" id="xingbie'+i+'"><option>男</option><option selected>女</option></select>';
-        tr.appendChild(td9);
+    td9 = document.createElement('td');
+    td9.innerHTML = '<select id="chufuzhenruyuan' + i + '" name="chufuzhenruyuan' + i + '><option value="1">初诊入院</option><option value="2">复诊入院</option></select>';
+    tr.appendChild(td9);
 
-        td10 = document.createElement('td');
-        td10.innerHTML = '<select name="quyu'+i+'" id="quyu'+i+'"><option>县城</option><option>广顺</option><option>杜家坝</option></select>';
-        tr.appendChild(td10);
+    td10 = document.createElement('td');
+    td10.innerHTML = '<input type="text" size="8" name="yujiaokuan' + i + '" id="yujiaokuan' + i + '" value="0"/>';
+    tr.appendChild(td10);
 
-        td11 = document.createElement('td');
-        td11.innerHTML = '<select name="shouzhuyuan'+i+'" id="shouzhuyuan'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td11);
+    td11 = document.createElement('td');
+    td11.innerHTML = '<select name="canbaoleixing' + i + '" id="canbaoleixing' + i + '"><option selected="selected">农合</option><option>职工</option><option>其他</option></select>';
+    tr.appendChild(td11);
 
-        td12 = document.createElement('td');
-        td12.innerHTML = '<select name="zhiliao'+i+'" id="zhiliao'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td12);
-
-        td13 = document.createElement('td');
-        td13.innerHTML = '<input type="text" size="8" name="zhiliaofei'+i+'" id="zhiliaofei'+i+'" value="0"/>';
-        tr.appendChild(td13);
-
-        td14 = document.createElement('td');
-        td14.innerHTML = '<select name="shoushu'+i+'" id="shoushu'+i+'"><option>是</option><option selected="selected">否</option></select>';
-        tr.appendChild(td14);
-
-        td15 = document.createElement('td');
-        td15.innerHTML = '<input type="text" size="8" name="shoushufei'+i+'" id="shoushufei'+i+'" value="0" />';
-        tr.appendChild(td15);
-
-        td16 = document.createElement('td');
-        td16.innerHTML = '<input type="text" size="8" name="menzhenxiaofei'+i+'" id="menzhenxiaofei'+i+'" value="0" />';
-        tr.appendChild(td16);
-
-tb.tBodies[0].appendChild(tr);
+    tb.tBodies[0].appendChild(tr);
 }
 

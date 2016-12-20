@@ -153,7 +153,7 @@
                 </tbody>
             </table>
             <input type="button" name="del" value=" - " onClick="delrow_ruyuan();">
-            <input type="button" name="add" value=" + " onClick="addrow_ruyuan('<?php echo $yiyuan?>');">
+            <input type="button" name="add" value=" + " onClick="addrow1('<?php echo $yiyuan?>');">
         </form>
     </body>
 </html>
