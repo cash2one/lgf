@@ -216,7 +216,6 @@
             </table>
             <input type="button" name="del" value=" - " onClick="delrow();">
             <input type="button" name="add" value=" + " onClick="addrow('<?php echo $yiyuan?>');">
-                <input type="button" name="add" value=" + " onClick="addrow1('<?php echo $yiyuan?>');">
         </form>
     </body>
 </html>

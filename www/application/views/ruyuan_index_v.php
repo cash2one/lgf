@@ -47,7 +47,7 @@
         
     </head>
     <body id="userlogin_body">
-        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post" >
+        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/data_add/ruyuan_add' ?>" method="post" >
             <table>
                 <tr>
                     <td>日期：</td>
@@ -152,8 +152,8 @@
                     
                 </tbody>
             </table>
-            <input type="button" name="del" value=" - " onClick="delrow_ruyuan();">
-            <input type="button" name="add" value=" + " onClick="addrow1('<?php echo $yiyuan?>');">
+            <input type="button" name="del" value=" - " onClick="delrow();">
+            <input type="button" name="add" value=" + " onClick="addrow_ruyuan('<?php echo $yiyuan?>');">
         </form>
     </body>
 </html>

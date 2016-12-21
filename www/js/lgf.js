@@ -158,6 +158,7 @@ function delrow() {
     if(i>2)
     tb.deleteRow(i - 1);
 }
+
 function addrow(yiyuan) {
     var i = tb.rows.length - 1;
     var tr = document.createElement('tr');
@@ -233,18 +234,12 @@ function addrow(yiyuan) {
 
 
 /*动态表格,为表格添加行,删除行操作----入院*/
-function delrow() {
-    var i = tb.rows.length;
-    if(i>2)
-    tb.deleteRow(i - 1);
-}
-function addrow1(yiyuan) {
-    alert(1);
+function addrow_ruyuan(yiyuan) {
     var i = tb.rows.length - 1;
     var tr = document.createElement('tr');
     
     td1 = document.createElement('td');
-    td1.innerHTML = '<input type="text" name="hospitalization_id' + i + '" value="hospitalization_id" '+ i + '/>';
+    td1.innerHTML = '<input type="text" name="hospitalization_id' + i + '" value="" '+ i + '/>';
     tr.appendChild(td1);
     
     td2 = document.createElement('td');
@@ -252,7 +247,7 @@ function addrow1(yiyuan) {
     tr.appendChild(td2);
     
     td3 = document.createElement('td');
-    td3.innerHTML = '<input type="text" name="name' + i + '" value="name' + i + '"/>';
+    td3.innerHTML = '<input type="text" name="name' + i + '" value=""/>';
     tr.appendChild(td3);
 
     td4 = document.createElement('td');
