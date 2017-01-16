@@ -47,7 +47,7 @@
         
     </head>
     <body id="userlogin_body">
-        <form name="jiuzhen" action="<?php echo base_url() . 'index.php/data_add/ruyuan_add' ?>" method="post" >
+        <form name="ruyuan" action="<?php echo base_url() . 'index.php/data_add/ruyuan_add' ?>" method="post" >
             <table>
                 <tr>
                     <td>日期：</td>

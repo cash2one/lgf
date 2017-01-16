@@ -274,6 +274,127 @@ class Data_add extends CI_Controller {
         
     }
     
+    public function ruyuan_add() {
+
+        var_dump($this->input->post(NULL,TRUE));
+        $ruyuans=$this->input->post(NULL,TRUE);
+        $len=count($ruyuans);
+//        echo $arr0['date']=$patents['date'];
+//        echo $arr0['yiyuan0']=$patents['yiyuan0'];
+        for($i=0;$i<($len-2)/18;$i++){
+            $arr[$i]['hospitalization_id']=$ruyuans['hospitalization_id'.$i];
+            $arr[$i]['yiyuan']=$ruyuans['yiyuan'.$i];
+            $arr[$i]['name']=$ruyuans['name'.$i];
+            $arr[$i]['nianling']=$ruyuans['nianling'.$i];
+            $arr[$i]['xingbie']=$ruyuans['xingbie'.$i];
+            if($arr[$i]['xingbie']==0){$arr[$i]['xingbie']='男';}
+            else if($arr[$i]['xingbie']==1){$arr[$i]['xingbie']='女';}
+//          科室
+            $arr[$i]['keshi']=$ruyuans['keshi'.$i];
+            if($arr[$i]['keshi']==1){$arr[$i]['keshi']='内科';}
+            else if($arr[$i]['keshi']==2){$arr[$i]['keshi']='外科';}
+            else if($arr[$i]['keshi']==3){$arr[$i]['keshi']='男科';}
+            else if($arr[$i]['keshi']==4){$arr[$i]['keshi']='妇科';}
+            else if($arr[$i]['keshi']==5){$arr[$i]['keshi']='产科';}
+            else if($arr[$i]['keshi']==6){$arr[$i]['keshi']='耳鼻喉';}
+            else if($arr[$i]['keshi']==7){$arr[$i]['keshi']='疼痛科';}
+            else if($arr[$i]['keshi']==8){$arr[$i]['keshi']='中医';}
+            else if($arr[$i]['keshi']==9){$arr[$i]['keshi']='其他';}
+            else{$arr[$i]['keshi']='';}
+//          来源渠道
+            $arr[$i]['laiyuanqudao']=$ruyuans['laiyuanqudao'.$i];
+            if($arr[$i]['laiyuanqudao']==0){$arr[$i]['laiyuanqudao']='网络';}
+            else if($arr[$i]['laiyuanqudao']==1){$arr[$i]['laiyuanqudao']='电话';}
+            else if($arr[$i]['laiyuanqudao']==2){$arr[$i]['laiyuanqudao']='QQ';}
+            else if($arr[$i]['laiyuanqudao']==3){$arr[$i]['laiyuanqudao']='杂志';}
+            else if($arr[$i]['laiyuanqudao']==4){$arr[$i]['laiyuanqudao']='市场';}
+            else if($arr[$i]['laiyuanqudao']==5){$arr[$i]['laiyuanqudao']='持卡';}
+            else if($arr[$i]['laiyuanqudao']==6){$arr[$i]['laiyuanqudao']='路过';}
+            else if($arr[$i]['laiyuanqudao']==7){$arr[$i]['laiyuanqudao']='附近';}
+            else if($arr[$i]['laiyuanqudao']==8){$arr[$i]['laiyuanqudao']='介绍';}
+            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='来过';}
+            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='会员证';}
+            else{$arr[$i]['laiyuanqudao']='';}
+            
+//          区域
+            $arr[$i]['quyu']=$ruyuans['quyu'.$i];
+            if($arr[$i]['quyu']==0){$arr[$i]['quyu']='县城';}
+            else if($arr[$i]['quyu']==1){$arr[$i]['quyu']='广顺';}
+            else if($arr[$i]['quyu']==1){$arr[$i]['quyu']='杜家坝';}
+//          初复诊入院
+            $arr[$i]['chufuzhenruyuan']=$ruyuans['chufuzhenruyuan'.$i];
+            if($arr[$i]['chufuzhenruyuan']==1){$arr[$i]['chufuzhenruyuan']='初诊入院';}
+            else{$arr[$i]['chufuzhenruyuan']='复诊入院';}
+            
+//          参保类型
+            $arr[$i]['canbaoleixing']=$ruyuans['canbaoleixing'.$i];
+            if($arr[$i]['canbaoleixing']==1){$arr[$i]['canbaoleixing']='一诊室';}
+            else if($arr[$i]['canbaoleixing']==2){$arr[$i]['canbaoleixing']='二诊室';}
+            else if($arr[$i]['canbaoleixing']==3){$arr[$i]['canbaoleixing']='三诊室';}
+            else{$arr[$i]['canbaoleixing']='';}
+            
+            $arr[$i]['riqi']=$ruyuans['date'];
+        }
+        var_dump($arr);
+        
+//        $data=$this->data_add_m->patients_info_select();
+//        var_dump($this->input->post(NULL,TRUE));
+//        $jiuzhen=$this->input->post(NULL,TRUE);
+//        var_dump($jiuzhen);
+//        echo $jiuzhen['date'];
+//        foreach ($jiuzhen as $key => $value) {
+//            echo $value ;
+//            echo '<br>';
+//        }
+//        $data['class_info'] = $this->info_add_m->class_info_select();
+//        $data['shangpin_info'] = $this->info_add_m->shangpin_info_select();
+//        $data['guige'] = $this->info_add_m->guige_select();
+//        $data['jixing'] = $this->info_add_m->jixing_select();
+//        $data['med_in_type'] = $this->info_add_m->med_in_type_select();
+//        $data['changjia'] = $this->info_add_m->changjia_select();
+//        $data['supplier'] = $this->drug_purchase_m->supplier_select();
+
+//        var_dump($data);
+//        $patients_ic=$this->db->query('select * from patients_ic');
+        
+//      设置表格类
+        $template = array(
+            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="table">'
+        );
+
+        $this->table->set_template($template);
+        $this->table->set_heading( '住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院','预交款','参保类型','日期');
+        $data['ruyuan_html']=$this->table->generate($arr);
+        
+        
+        
+        
+//        $this->data_add_m->patients_info_insert($arr);
+        $this->load->view('ruyuan_ic_v',$data);
+//      设置表单校验类
+//        $this->form_validation->set_rules('chufuzhen','初复诊','required');
+//        $this->form_validation->set_rules('keshi','科室','required');
+//        $this->form_validation->set_rules('nianling','年龄','required|numeric');
+//        
+////        echo 'user_add';
+//        echo validation_errors(); 
+//        $bool=$this->form_validation->run();
+//        if($bool){
+//            $this->data_add_m->patients_info_insert($arr);
+//            $this->load->view('patients_ic_v',$data);
+//        }
+//        else{
+////            echo 'add failed';
+////            $data['company'] = $this->sys_manager_m->company_select();
+////            $this->load->view('user_add_v');
+//            echo "<script>alert('".form_error('chufuzhen')."');</script>";
+//            echo "<script>alert('".form_error('keshi')."');</script>";
+//            echo "<script>alert('".form_error('nianling')."');</script>";
+//        }
+        
+        
+    }
+    
     public function zhuyuan_shouru_every(){
         $this->load->view('zhuyuan_shouru_every_v');
     }
