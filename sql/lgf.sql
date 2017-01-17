@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-12-15 13:22:55
+-- Generation Time: 2017-01-17 13:20:51
 -- 服务器版本： 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -157,7 +157,8 @@ INSERT INTO `patients_ic` (`id`, `yiyuan`, `chufuzhen`, `liushi`, `keshi`, `zhen
 (83, '荣昌仁爱医院', '初诊', '复诊流失', '产科', '', '孕检', '网络', 23, '女', '县城', '0', '是', 100, '0', 0, 100, NULL, '2016-10-03', '2016-10-03 06:43:22'),
 (84, '荣昌仁爱医院', '初诊', '复诊流失', '产科', '', '孕检', '网络', 23, '女', '县城', '0', '0', 0, '是', 1500, 0, NULL, '2016-09-29', '2016-10-03 06:44:11'),
 (85, '荣昌仁爱医院', '初诊', '', '产科', '', '孕检', '网络', 27, '女', '县城', '否', '是', 30, '是', 90, 120, NULL, '2016-10-04', '2016-10-04 15:51:32'),
-(86, '财务公司', '初诊', '', '内科', '', '胃炎', '网络', 0, '女', '县城', '否', '否', 0, '否', 0, 0, NULL, '2016-12-23', '2016-12-15 12:08:58');
+(86, '财务公司', '初诊', '', '内科', '', '胃炎', '网络', 0, '女', '县城', '否', '否', 0, '否', 0, 0, NULL, '2016-12-23', '2016-12-15 12:08:58'),
+(87, '财务公司', '初诊', '', '内科', '', '胃炎', '网络', 0, '女', '县城', '否', '否', 0, '否', 0, 0, NULL, '2017-01-17', '2017-01-17 10:33:37');
 
 -- --------------------------------------------------------
 
@@ -176,8 +177,18 @@ CREATE TABLE `ruyuan_ic` (
   `quyu` varchar(30) DEFAULT NULL,
   `chufuzhenruyuan` tinyint(1) NOT NULL,
   `yujiaokuan` double NOT NULL DEFAULT '0',
-  `canbaoleixing` varchar(20) DEFAULT NULL
+  `canbaoleixing` varchar(20) DEFAULT NULL,
+  `beizhu` varchar(50) DEFAULT NULL,
+  `riqi` date NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `ruyuan_ic`
+--
+
+INSERT INTO `ruyuan_ic` (`hospitalization_id`, `yiyuan`, `name`, `nianling`, `xingbie`, `keshi`, `laiyuanqudao`, `quyu`, `chufuzhenruyuan`, `yujiaokuan`, `canbaoleixing`, `beizhu`, `riqi`, `time`) VALUES
+('20170117', '财务公司', '张三', 26, 0, '外科', '电话', '杜家坝', 0, 1000, '职工', NULL, '2017-01-17', '2017-01-17 10:35:49');
 
 -- --------------------------------------------------------
 
@@ -316,7 +327,7 @@ ALTER TABLE `patients`
 -- 使用表AUTO_INCREMENT `patients_ic`
 --
 ALTER TABLE `patients_ic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=88;
 --
 -- 使用表AUTO_INCREMENT `users`
 --

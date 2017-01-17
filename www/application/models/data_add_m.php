@@ -16,8 +16,12 @@ class data_add_m extends CI_Model {
 //        $this->db->like('shangpin_id','0001' , 'after');
         $query = $this->db->get('patients_ic');
         return $query->result();
-    }   
+    }
     
+    function ruyuan_info_insert($arr){
+        $this->db->insert_batch('ruyuan_ic', $arr);
+    }
+            
     function zhuyuan_shouru_every_insert($arr) {
         $this->db->insert_batch('zhuyuan_shouru_every', $arr);
     }
