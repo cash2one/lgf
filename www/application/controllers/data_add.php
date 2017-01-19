@@ -33,8 +33,8 @@ class Data_add extends CI_Controller {
     
     public function chuyuan_index() {
         session_start();
-        $data['yiyuan']=$_SESSION['company'];
-        $this->load->view('chuyuan_index_v',$data);
+//        $data['yiyuan']=$_SESSION['company'];
+        $this->load->view('chuyuan_index_v');
     }
     
     public function chuyuan_index_sel() {
@@ -43,6 +43,54 @@ class Data_add extends CI_Controller {
     
     public function chuyuan_index_res() {
         $this->load->view('chuyuan_index_res_v');
+    }
+    
+    public function ruyuan_select() {
+        $ruyuan=$this->input->post(NULL,TRUE);
+//        var_dump($ruyuan);
+        
+        $ruyuan_date_begin=$ruyuan['ruyuan_date_begin'];
+        $ruyuan_date_end=$ruyuan['ruyuan_date_end'];
+        $hospitalization_id=$ruyuan['hospitalization_id'];
+        $name=$ruyuan['name'];
+        
+        $ruyuan_infos=$this->data_add_m->ruyuan_info_select($ruyuan_date_begin,$ruyuan_date_end,$hospitalization_id,$name);
+//      对象转换为数组
+//        $arr = json_decode(json_encode($arr),true); 
+//        var_dump($ruyuan_infos);
+        if(!empty($ruyuan_infos)){
+            foreach ($ruyuan_infos as $key => $value) {
+            $arr[$key]['hospitalization_id']=$value->hospitalization_id;
+            $arr[$key]['yiyuan']=$value->yiyuan;
+            $arr[$key]['name']=$value->name;
+            $arr[$key]['nianling']=$value->nianling;
+            $arr[$key]['xingbie']=$value->xingbie;
+            $arr[$key]['keshi']=$value->keshi;
+            $arr[$key]['laiyuanqudao']=$value->laiyuanqudao;
+            $arr[$key]['quyu']=$value->quyu;
+            $arr[$key]['chufuzhenruyuan']=$value->chufuzhenruyuan;
+            $arr[$key]['yujiaokuan']=$value->yujiaokuan;
+            $arr[$key]['canbaoleixing']=$value->canbaoleixing;
+            $arr[$key]['riqi']=$value->riqi;
+        }
+        
+        }
+        else{
+            $arr= ' ';
+        }
+//        var_dump($arr);
+
+        //      设置表格类
+        $template = array(
+            'table_open' => '<table align="center" border="1" cellpadding="2" cellspacing="1" class="table">'
+        );
+
+        $this->table->set_template($template);
+        $this->table->set_heading( '住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院','预交款','参保类型','入院日期');
+        $data['ruyuan_sel_html']=$this->table->generate($arr);
+        
+
+        $this->load->view('chuyuan_index_res_v',$data);
     }
     
     public function date_gen_index() {
@@ -358,7 +406,7 @@ class Data_add extends CI_Controller {
         $data['ruyuan_html']=$this->table->generate($arr);
         
 //      将数据插入数据库
-        $this->data_add_m->ruyuan_info_insert($arr);
+//        $this->data_add_m->ruyuan_info_insert($arr);
         $this->load->view('ruyuan_ic_v',$data);        
     }
     
@@ -436,7 +484,7 @@ class Data_add extends CI_Controller {
         $this->table->set_template($template);
         $this->table->set_heading( '住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院','预交款','参保类型','日期');
         $data['ruyuan_html']=$this->table->generate($arr);
-        
+//        $data['ruyuan_sel_html']=$this->table->generate($arr);
 //      将数据插入数据库
 //        $this->data_add_m->ruyuan_info_insert($arr);
         $this->load->view('ruyuan_ic_v',$data);        

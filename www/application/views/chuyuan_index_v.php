@@ -5,14 +5,46 @@
         <meta http-equiv=pragma content=no-cache />
         <meta http-equiv=cache-control content=no-cache />
         <meta http-equiv=expires content=-1000 />
-        <title>出院信息录入</title>
+        <link href="<?php echo base_url().'css/admin.css' ?>" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="<?php echo base_url().'js/jquery.js'?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.min.js'?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'js/modal.js'?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/dataone.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/lgf.js'?>"></script>
+        <script src="<?php echo base_url() . 'js/jquery.js' ?>"></script>
+        <title>入院录入</title>
     </head>
-        <frameset border=0 framespacing=0 rows="200, *" frameborder=0>
-        <frame name=select src="<?php echo base_url().'index.php/data_add/chuyuan_index_sel' ?>" frameborder=0 noresize scrolling=no>
-        <frame name=result src="<?php echo base_url().'index.php/data_add/chuyuan_index_res' ?>" frameborder=0 noresize scrolling=yes>
-    </frameset>
-    <noframes>
-    </noframes>
+    <body id="chuyuan_index_sel_body">
+        <form name="ruyuan" action="<?php echo base_url() . 'index.php/data_add/ruyuan_select' ?>" method="post" >
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>入院日期：</td>
+                        <td><input type="text" name="ruyuan_date_begin"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
+                        <td>至：</td>
+                        <td><input type="text" name="ruyuan_date_end"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
+                    </tr>
+                    <tr>
+<!--                        住院号-->
+                        <td>住院号：</td>
+                        <td><input type="text" name="hospitalization_id" value=""/></td>
+<!--                        姓名-->
+                        <td>姓名：</td>
+                        <td><input type="text" name="name" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" size="17" name="submit" value="查询"/></td>
+                        <td><input type="reset" size="17" name="reset" value="重置"/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            
+            
+        </form>
+    </body>
 </html>
 
 

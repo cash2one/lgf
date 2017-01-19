@@ -20,6 +20,7 @@
         <h1 align="center">恭喜你！导入成功！</h1>
         <!--<form name="subform_changjia" action="<?php echo base_url() . 'index.php/data_add/jiuzhen_add' ?>" method="post">-->
             <?php echo $ruyuan_html; ?>
+        <?php // echo $ruyuan_sel_html; ?>
 <!--            <input type="submit" size="17" name="submit" value="提交"/>-->
         <!--</form>-->
     </body>

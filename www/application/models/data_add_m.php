@@ -21,6 +21,21 @@ class data_add_m extends CI_Model {
     function ruyuan_info_insert($arr){
         $this->db->insert_batch('ruyuan_ic', $arr);
     }
+    
+    function ruyuan_info_select($ruyuan_date_begin,$ruyuan_date_end,$hospitalization_id,$name) {
+        $this->db->select('*');
+        $this->db->where('riqi >=',$ruyuan_date_begin);
+        $this->db->where('riqi <=',$ruyuan_date_end);
+        if($hospitalization_id!=null){
+            $this->db->where('hospitalization_id',$hospitalization_id);
+        }
+        if($name!=null){
+            $this->db->where('name',$name);
+        }
+
+        $query = $this->db->get('ruyuan_ic');
+        return $query->result();
+    }
             
     function zhuyuan_shouru_every_insert($arr) {
         $this->db->insert_batch('zhuyuan_shouru_every', $arr);
