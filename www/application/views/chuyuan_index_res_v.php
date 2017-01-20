@@ -20,17 +20,17 @@
             <table class="table">
                 <tr>
                     <td>入院日期：</td>
-                    <td><input type="text" name="ruyuan_date_begin"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
+                    <td><input type="text" name="ruyuan_date_begin"  readOnly onClick="setDay(this);" value="<?php echo $ruyuan_date_begin ?>"/></td>
                     <td>至：</td>
-                    <td><input type="text" name="ruyuan_date_end"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
+                    <td><input type="text" name="ruyuan_date_end"  readOnly onClick="setDay(this);" value="<?php echo $ruyuan_date_end ?>"/></td>
                 </tr>
                 <tr>
                     <!--住院号-->
                     <td>住院号：</td>
-                    <td><input type="text" name="hospitalization_id" value=""/></td>
+                    <td><input type="text" name="hospitalization_id" value="<?php echo $hospitalization_id ?>"/></td>
                     <!--姓名-->
                     <td>姓名：</td>
-                    <td><input type="text" name="name" value=""/></td>
+                    <td><input type="text" name="name" value="<?php echo $name ?>"/></td>
                 </tr>
                 <tr>
                     <td></td>

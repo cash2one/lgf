@@ -33,17 +33,41 @@ class Data_add extends CI_Controller {
     
     public function chuyuan_index() {
         session_start();
-//        $data['yiyuan']=$_SESSION['company'];
-        $this->load->view('chuyuan_index_v');
+        $ruyuan_infos=$this->data_add_m->ruyuan_info_select_by_hospitalization_id($_REQUEST['hospitalization_id']);
+//        var_dump($ruyuan_infos);
+        if(!empty($ruyuan_infos)){
+            foreach ($ruyuan_infos as $key => $value) {
+//                $data['hospitalization_id=$value->hospitalization_id;
+                $data['yiyuan']=$value->yiyuan;
+                $data['name']=$value->name;
+                $data['nianling']=$value->nianling;
+                $data['xingbie']=$value->xingbie;
+                $data['keshi']=$value->keshi;
+                $data['laiyuanqudao']=$value->laiyuanqudao;
+                $data['quyu']=$value->quyu;
+                $data['chufuzhenruyuan']=$value->chufuzhenruyuan;
+                $data['yujiaokuan']=$value->yujiaokuan;
+                $data['canbaoleixing']=$value->canbaoleixing;
+                $data['riqi']=$value->riqi;
+            }
+        }
+        $data['yiyuan']=$_SESSION['company'];
+        $data['hospitalization_id']=$_REQUEST['hospitalization_id'];
+//        echo date('Y-m-d',time());
+//        echo $data['riqi'];
+//      计算日期天数差
+        $data['zhuyuantianshu']=ceil(strtotime(date('Y-m-d',time()))-strtotime($data['riqi']))/86400;
+        $this->load->view('chuyuan_index_v',$data);
     }
     
     public function chuyuan_index_sel() {
+        session_start();
         $this->load->view('chuyuan_index_sel_v');
     }
     
-    public function chuyuan_index_res() {
-        $this->load->view('chuyuan_index_res_v');
-    }
+//    public function chuyuan_index_res() {
+//        $this->load->view('chuyuan_index_res_v');
+//    }
     
     public function ruyuan_select() {
         $ruyuan=$this->input->post(NULL,TRUE);
@@ -60,20 +84,19 @@ class Data_add extends CI_Controller {
 //        var_dump($ruyuan_infos);
         if(!empty($ruyuan_infos)){
             foreach ($ruyuan_infos as $key => $value) {
-            $arr[$key]['hospitalization_id']=$value->hospitalization_id;
-            $arr[$key]['yiyuan']=$value->yiyuan;
-            $arr[$key]['name']=$value->name;
-            $arr[$key]['nianling']=$value->nianling;
-            $arr[$key]['xingbie']=$value->xingbie;
-            $arr[$key]['keshi']=$value->keshi;
-            $arr[$key]['laiyuanqudao']=$value->laiyuanqudao;
-            $arr[$key]['quyu']=$value->quyu;
-            $arr[$key]['chufuzhenruyuan']=$value->chufuzhenruyuan;
-            $arr[$key]['yujiaokuan']=$value->yujiaokuan;
-            $arr[$key]['canbaoleixing']=$value->canbaoleixing;
-            $arr[$key]['riqi']=$value->riqi;
-        }
-        
+                $arr[$key]['hospitalization_id']='<a target=_blank href='. base_url() . 'index.php/data_add/chuyuan_index?hospitalization_id='.$value->hospitalization_id.' value='.$value->hospitalization_id.'>'.$value->hospitalization_id.'</a>';
+                $arr[$key]['yiyuan']=$value->yiyuan;
+                $arr[$key]['name']=$value->name;
+                $arr[$key]['nianling']=$value->nianling;
+                $arr[$key]['xingbie']=$value->xingbie;
+                $arr[$key]['keshi']=$value->keshi;
+                $arr[$key]['laiyuanqudao']=$value->laiyuanqudao;
+                $arr[$key]['quyu']=$value->quyu;
+                $arr[$key]['chufuzhenruyuan']=$value->chufuzhenruyuan;
+                $arr[$key]['yujiaokuan']=$value->yujiaokuan;
+                $arr[$key]['canbaoleixing']=$value->canbaoleixing;
+                $arr[$key]['riqi']=$value->riqi;
+            }
         }
         else{
             $arr= ' ';
@@ -88,7 +111,10 @@ class Data_add extends CI_Controller {
         $this->table->set_template($template);
         $this->table->set_heading( '住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院','预交款','参保类型','入院日期');
         $data['ruyuan_sel_html']=$this->table->generate($arr);
-        
+        $data['ruyuan_date_begin']=$ruyuan_date_begin;
+        $data['ruyuan_date_end']=$ruyuan_date_end;
+        $data['hospitalization_id']=$hospitalization_id;
+        $data['name']=$name;
 
         $this->load->view('chuyuan_index_res_v',$data);
     }
@@ -413,68 +439,42 @@ class Data_add extends CI_Controller {
     public function chuyuan_add() {
 
 //        var_dump($this->input->post(NULL,TRUE));
-        $ruyuans=$this->input->post(NULL,TRUE);
-        $len=count($ruyuans);
-//        echo $arr0['date']=$patents['date'];
-//        echo $arr0['yiyuan0']=$patents['yiyuan0'];
-        for($i=0;$i<($len-2)/18;$i++){
-            $arr[$i]['hospitalization_id']=$ruyuans['hospitalization_id'.$i];
-            $arr[$i]['yiyuan']=$ruyuans['yiyuan'.$i];
-            $arr[$i]['name']=$ruyuans['name'.$i];
-            $arr[$i]['nianling']=$ruyuans['nianling'.$i];
-            $arr[$i]['xingbie']=$ruyuans['xingbie'.$i];
-            if($arr[$i]['xingbie']==0){$arr[$i]['xingbie']='男';}
-            else if($arr[$i]['xingbie']==1){$arr[$i]['xingbie']='女';}
-//          科室
-            $arr[$i]['keshi']=$ruyuans['keshi'.$i];
-            if($arr[$i]['keshi']==1){$arr[$i]['keshi']='内科';}
-            else if($arr[$i]['keshi']==2){$arr[$i]['keshi']='外科';}
-            else if($arr[$i]['keshi']==3){$arr[$i]['keshi']='男科';}
-            else if($arr[$i]['keshi']==4){$arr[$i]['keshi']='妇科';}
-            else if($arr[$i]['keshi']==5){$arr[$i]['keshi']='产科';}
-            else if($arr[$i]['keshi']==6){$arr[$i]['keshi']='耳鼻喉';}
-            else if($arr[$i]['keshi']==7){$arr[$i]['keshi']='疼痛科';}
-            else if($arr[$i]['keshi']==8){$arr[$i]['keshi']='中医';}
-            else if($arr[$i]['keshi']==9){$arr[$i]['keshi']='其他';}
-            else{$arr[$i]['keshi']='';}
-//          来源渠道
-            $arr[$i]['laiyuanqudao']=$ruyuans['laiyuanqudao'.$i];
-            if($arr[$i]['laiyuanqudao']==0){$arr[$i]['laiyuanqudao']='网络';}
-            else if($arr[$i]['laiyuanqudao']==1){$arr[$i]['laiyuanqudao']='电话';}
-            else if($arr[$i]['laiyuanqudao']==2){$arr[$i]['laiyuanqudao']='QQ';}
-            else if($arr[$i]['laiyuanqudao']==3){$arr[$i]['laiyuanqudao']='杂志';}
-            else if($arr[$i]['laiyuanqudao']==4){$arr[$i]['laiyuanqudao']='市场';}
-            else if($arr[$i]['laiyuanqudao']==5){$arr[$i]['laiyuanqudao']='持卡';}
-            else if($arr[$i]['laiyuanqudao']==6){$arr[$i]['laiyuanqudao']='路过';}
-            else if($arr[$i]['laiyuanqudao']==7){$arr[$i]['laiyuanqudao']='附近';}
-            else if($arr[$i]['laiyuanqudao']==8){$arr[$i]['laiyuanqudao']='介绍';}
-            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='来过';}
-            else if($arr[$i]['laiyuanqudao']==9){$arr[$i]['laiyuanqudao']='会员证';}
-            else{$arr[$i]['laiyuanqudao']='';}
-            
-//          区域
-            $arr[$i]['quyu']=$ruyuans['quyu'.$i];
-            if($arr[$i]['quyu']==0){$arr[$i]['quyu']='县城';}
-            else if($arr[$i]['quyu']==1){$arr[$i]['quyu']='广顺';}
-            else if($arr[$i]['quyu']==2){$arr[$i]['quyu']='杜家坝';}
-            
-//          初复诊入院
-            $arr[$i]['chufuzhenruyuan']=$ruyuans['chufuzhenruyuan'.$i];
-            if($arr[$i]['chufuzhenruyuan']==1){$arr[$i]['chufuzhenruyuan']='初诊入院';}
-            else{$arr[$i]['chufuzhenruyuan']='复诊入院';}
-            
-            $arr[$i]['yujiaokuan']=$ruyuans['yujiaokuan'.$i];
-            
-//          参保类型
-            $arr[$i]['canbaoleixing']=$ruyuans['canbaoleixing'.$i];
-            if($arr[$i]['canbaoleixing']==0){$arr[$i]['canbaoleixing']='农合';}
-            else if($arr[$i]['canbaoleixing']==1){$arr[$i]['canbaoleixing']='职工';}
-            else if($arr[$i]['canbaoleixing']==2){$arr[$i]['canbaoleixing']='其他';}
-            
-//          日期
-            $arr[$i]['riqi']=$ruyuans['date'];
+        $chuyuans=$this->input->post(NULL,TRUE);
+//        $arr['chuyuan_date'] = $chuyuans['chuyuan_date'];
+//        $arr['hospitalization_id'] = $chuyuans['hospitalization_id'];
+//        $arr['yiyuan'] = $chuyuans['yiyuan'];
+//        $arr['name'] = $chuyuans['name'];
+//        $arr['nianling'] = $chuyuans['nianling'];
+//        $arr['xingbie'] = $chuyuans['xingbie'];
+//        $arr['keshi'] = $chuyuans['keshi'];
+//        $arr['laiyuanqudao'] = $chuyuans['laiyuanqudao'];
+//        $arr['quyu'] = $chuyuans['quyu'];
+//        $arr['chufuzhenruyuan'] = $chuyuans['chufuzhenruyuan'];
+//        $arr['canbaoleixing'] = $chuyuans['canbaoleixing'];
+//        $arr['riqi'] = $chuyuans['riqi'];
+//        $arr['shifoushoushu'] = $chuyuans['shifoushoushu'];
+//        $arr['zhuyuantianshu'] = $chuyuans['zhuyuantianshu'];
+//        $arr['yujiaokuan'] = $chuyuans['yujiaokuan'];
+//        $arr['zifei'] = $chuyuans['zifei'];
+//        $arr['yibao'] = $chuyuans['yibao'];
+//        $arr['bukuan'] = $chuyuans['bukuan'];
+//        $arr['yiyuandianfu'] = $chuyuans['yiyuandianfu'];
+//        $arr['shouru'] = $chuyuans['shouru'];
+//        $arr['zongfeiyong'] = $chuyuans['zongfeiyong'];
+//        $arr['zhenduan'] = $chuyuans['zhenduan'];
+
+        if($chuyuans['shifoushoushu']==0){
+            $chuyuans['shifoushoushu']='否';
+        }else{
+            $chuyuans['shifoushoushu']='是';
         }
 //        var_dump($arr);
+        
+        $arr =array($chuyuans['chuyuan_date'],$chuyuans['hospitalization_id'],$chuyuans['yiyuan'],$chuyuans['name'],
+            $chuyuans['nianling'],$chuyuans['xingbie'],$chuyuans['keshi'],$chuyuans['laiyuanqudao'],$chuyuans['quyu'],
+            $chuyuans['chufuzhenruyuan'],$chuyuans['canbaoleixing'],$chuyuans['riqi'],$chuyuans['shifoushoushu'],
+            $chuyuans['zhuyuantianshu'],$chuyuans['yujiaokuan'],$chuyuans['zifei'],$chuyuans['yibao'],$chuyuans['bukuan'],
+            $chuyuans['yiyuandianfu'],$chuyuans['shouru'],$chuyuans['zongfeiyong'],$chuyuans['zhenduan']);
         
 //      设置表格类
         $template = array(
@@ -482,11 +482,12 @@ class Data_add extends CI_Controller {
         );
 
         $this->table->set_template($template);
-        $this->table->set_heading( '住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院','预交款','参保类型','日期');
-        $data['ruyuan_html']=$this->table->generate($arr);
-//        $data['ruyuan_sel_html']=$this->table->generate($arr);
+        $this->table->set_heading('出院日期','住院号', '医院','姓名','年龄','性别','科室','来源渠道','区域','初复诊入院',
+                '参保类型','入院日期','是否手术','住院天数','预交款','自费','医保','补款','医院垫付','收入','总费用','诊断');
+        $this->table->add_row($arr);
+        $data['ruyuan_html']=$this->table->generate();
 //      将数据插入数据库
-//        $this->data_add_m->ruyuan_info_insert($arr);
+        $this->data_add_m->chuyuan_info_insert($arr);
         $this->load->view('ruyuan_ic_v',$data);        
     }
     

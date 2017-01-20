@@ -214,7 +214,7 @@
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
                             <td ><a class=menuchild 
-                                   href="<?php echo base_url().'index.php/data_add/chuyuan_index' ?>" 
+                                   href="<?php echo base_url().'index.php/data_add/chuyuan_index_sel' ?>" 
                                    target=right>出院录入</a></td></tr>
                         
                         <tr height=20>
