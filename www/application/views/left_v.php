@@ -246,13 +246,13 @@
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
                             <td ><a class=menuchild 
                                    href="<?php echo base_url().'index.php/patients/patients_menzhen_every' ?>" 
-                                   target=right>每日数据</a></td></tr>
+                                   target=right>每日门诊</a></td></tr>
                         <tr height=20>
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>
                             <td ><a class=menuchild 
-                                   href="<?php echo base_url().'index.php/patients/patients_year' ?>" 
-                                   target=right>年度数据</a></td></tr>
+                                   href="<?php echo base_url().'index.php/patients/patients_zhuyuan_every' ?>" 
+                                   target=right>每日住院</a></td></tr>
                         <tr height=20>
                             <td align=middle width=30><img height=9 
                                                            src="<?php echo base_url().'/img/menu_icon.gif' ?>" width=9></td>

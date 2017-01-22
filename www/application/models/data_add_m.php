@@ -43,6 +43,10 @@ class data_add_m extends CI_Model {
         $query = $this->db->get('ruyuan_ic');
         return $query->result();
     }
+    
+    function chuyuan_info_insert($arr){
+        $this->db->insert_batch('chuyuan_ic', $arr);
+    }
             
     function zhuyuan_shouru_every_insert($arr) {
         $this->db->insert_batch('zhuyuan_shouru_every', $arr);

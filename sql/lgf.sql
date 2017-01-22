@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-01-20 13:15:06
+-- Generation Time: 2017-01-22 13:48:25
 -- 服务器版本： 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -28,17 +28,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chuyuan_ic` (
   `chuyuan_id` int(11) NOT NULL,
+  `chuyuan_date` date NOT NULL,
   `hospitalization_id` char(8) NOT NULL,
   `zhenduan` varchar(100) DEFAULT NULL,
   `zifei` double DEFAULT NULL,
   `yibao` double DEFAULT NULL,
   `bukuan` double DEFAULT NULL,
-  `bukuanyiyuandianfu` double DEFAULT NULL,
+  `yiyuandianfu` double DEFAULT NULL,
   `shouru` double DEFAULT NULL,
   `zongfeiyong` double DEFAULT NULL,
-  `shoushu` tinyint(1) DEFAULT NULL,
+  `shifoushoushu` tinyint(1) DEFAULT NULL,
   `zhuyuantianshu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `chuyuan_ic`
+--
+
+INSERT INTO `chuyuan_ic` (`chuyuan_id`, `chuyuan_date`, `hospitalization_id`, `zhenduan`, `zifei`, `yibao`, `bukuan`, `yiyuandianfu`, `shouru`, `zongfeiyong`, `shifoushoushu`, `zhuyuantianshu`) VALUES
+(1, '2017-01-22', '20170117', '财务公司', 0, 26, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +198,10 @@ CREATE TABLE `ruyuan_ic` (
 INSERT INTO `ruyuan_ic` (`hospitalization_id`, `yiyuan`, `name`, `nianling`, `xingbie`, `keshi`, `laiyuanqudao`, `quyu`, `chufuzhenruyuan`, `yujiaokuan`, `canbaoleixing`, `beizhu`, `riqi`, `time`) VALUES
 ('20170117', '财务公司', '张三', 26, 0, '外科', '电话', '杜家坝', 0, 1000, '职工', NULL, '2017-01-17', '2017-01-17 10:35:49'),
 ('20170118', '财务公司', '李四', 0, 0, '妇科', '电话', '县城', 0, 2000, '职工', NULL, '2017-01-19', '2017-01-19 11:09:21'),
-('20170119', '财务公司', '王五', 29, 0, '外科', '路过', '县城', 0, 5000, '职工', NULL, '2017-01-19', '2017-01-19 12:29:09');
+('20170119', '财务公司', '王五', 29, 0, '外科', '路过', '县城', 0, 5000, '职工', NULL, '2017-01-19', '2017-01-19 12:29:09'),
+('20170122', '财务公司', '病人甲', 41, 0, '内科', '附近', '县城', 0, 2000, '农合', NULL, '2017-01-22', '2017-01-22 12:31:21'),
+('20170123', '财务公司', '病人乙', 18, 0, '内科', '网络', '县城', 0, 0, '其他', NULL, '2017-01-22', '2017-01-22 12:47:08'),
+('20170124', '财务公司', '病人丙', 0, 0, '内科', '网络', '县城', 0, 1000, '农合', NULL, '2017-01-22', '2017-01-22 12:47:30');
 
 -- --------------------------------------------------------
 
@@ -314,7 +325,7 @@ ALTER TABLE `zhuyuan_shouru_every`
 -- 使用表AUTO_INCREMENT `chuyuan_ic`
 --
 ALTER TABLE `chuyuan_ic`
-  MODIFY `chuyuan_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `chuyuan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `menzhen_shouru_every`
 --

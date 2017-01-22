@@ -34,17 +34,17 @@ class patients_m extends CI_Model {
         return $query;
     }
     
-    function zhuyuan_shouru_every_select($riqi){
-        $this->db->select('*');
-        $this->db->where('riqi',$riqi);
-        $query = $this->db->get('zhuyuan_shouru_every');
-        return $query->result();
-    }
-    
     function menzhen_shouru_every_select($date){
         $this->db->select('*');
         $this->db->where('riqi',$date);
         $query = $this->db->get('menzhen_shouru_every');
+        return $query->result();
+    }
+    
+    function zhuyuan_shouru_every_select($date){
+        $this->db->select('*');
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('zhuyuan_shouru_every');
         return $query->result();
     }
     
@@ -57,10 +57,33 @@ class patients_m extends CI_Model {
         return $query->result();
     }
     
+    function zhuyuan_shouru_every_select_sum($date){
+        $this->db->select('*');
+        $first_day=substr($date, 0, 7).'-01';
+        $this->db->where('riqi >=',$first_day);
+        $this->db->where('riqi <=',$date);
+        $query = $this->db->get('zhuyuan_shouru_every');
+        return $query->result();
+    }
+    
     function patients_select($date){
         $this->db->select('*');
         $this->db->where('riqi',$date);
         $query = $this->db->get('patients_ic');
+        return $query->result();
+    }
+    
+    function zhuyuans_select($date){
+        $this->db->select('*');
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('ruyuan_ic');
+        return $query->result();
+    }
+    
+    function chuyuans_select($date){
+        $this->db->select('*');
+        $this->db->where('chuyuan_date',$date);
+        $query = $this->db->get('chuyuan_ic');
         return $query->result();
     }
     
@@ -190,5 +213,22 @@ class patients_m extends CI_Model {
         $this->db->where('shoushu','是');
         $query=$this->db->count_all_results('patients_ic');
         return $query;
+    }
+    
+        
+    function zhuyuan_select_keshi($date,$keshi,$chufuzhenruyuan){
+        $this->db->where('riqi',$date);
+        $this->db->where('keshi',$keshi);
+        $this->db->where('chufuzhenruyuan',$chufuzhenruyuan);
+        $query=$this->db->count_all_results('ruyuan_ic');
+        return $query;
+    }
+    
+        
+    function zhuyuan_select_yujiaokuan($date){
+        $this->db->select('yujiaokuan');
+        $this->db->where('riqi',$date);
+        $query = $this->db->get('ruyuan_ic');
+        return $query->result();
     }
 }

@@ -432,7 +432,7 @@ class Data_add extends CI_Controller {
         $data['ruyuan_html']=$this->table->generate($arr);
         
 //      将数据插入数据库
-//        $this->data_add_m->ruyuan_info_insert($arr);
+        $this->data_add_m->ruyuan_info_insert($arr);
         $this->load->view('ruyuan_ic_v',$data);        
     }
     
@@ -468,7 +468,7 @@ class Data_add extends CI_Controller {
         }else{
             $chuyuans['shifoushoushu']='是';
         }
-//        var_dump($arr);
+
         
         $arr =array($chuyuans['chuyuan_date'],$chuyuans['hospitalization_id'],$chuyuans['yiyuan'],$chuyuans['name'],
             $chuyuans['nianling'],$chuyuans['xingbie'],$chuyuans['keshi'],$chuyuans['laiyuanqudao'],$chuyuans['quyu'],
@@ -486,8 +486,23 @@ class Data_add extends CI_Controller {
                 '参保类型','入院日期','是否手术','住院天数','预交款','自费','医保','补款','医院垫付','收入','总费用','诊断');
         $this->table->add_row($arr);
         $data['ruyuan_html']=$this->table->generate();
+//        var_dump($arr);
+        $arr_db[0]['chuyuan_date']=$arr[0];
+        $arr_db[0]['hospitalization_id']=$arr[1];
+        $arr_db[0]['zhenduan']=$arr[2];
+        $arr_db[0]['zifei']=$arr[3];
+        $arr_db[0]['yibao']=$arr[4];
+        $arr_db[0]['bukuan']=$arr[5];
+        $arr_db[0]['yiyuandianfu']=$arr[6];
+        $arr_db[0]['shouru']=$arr[7];
+        $arr_db[0]['zongfeiyong']=$arr[8];
+        $arr_db[0]['shifoushoushu']=$arr[9];
+        $arr_db[0]['zhuyuantianshu']=$arr[10];
+        
+//        var_dump($arr_db);
+                
 //      将数据插入数据库
-        $this->data_add_m->chuyuan_info_insert($arr);
+        $this->data_add_m->chuyuan_info_insert($arr_db);
         $this->load->view('ruyuan_ic_v',$data);        
     }
     

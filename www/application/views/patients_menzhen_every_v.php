@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta content="MSHTML 6.00.6000.16674" name="GENERATOR" />
 
-        <title>每日数据</title>
+        <title>每日门诊</title>
 
         <!--<link href="<?php echo base_url() . '/css/User_Login.css' ?>" type="text/css" rel="stylesheet" />-->
         <link href="<?php echo base_url() . '/css/bootstrap.min.css' ?>" type="text/css" rel="stylesheet" />

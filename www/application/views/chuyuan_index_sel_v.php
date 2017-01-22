@@ -6,6 +6,7 @@
         <meta http-equiv=cache-control content=no-cache />
         <meta http-equiv=expires content=-1000 />
         <link href="<?php echo base_url().'css/admin.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url().'css/bootstrap.min.css'?>" rel="stylesheet" media="screen">
         <script type="text/javascript" src="<?php echo base_url().'js/jquery.js'?>"></script>
 	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.min.js'?>"></script>
 	<script type="text/javascript" src="<?php echo base_url().'js/modal.js'?>"></script>
