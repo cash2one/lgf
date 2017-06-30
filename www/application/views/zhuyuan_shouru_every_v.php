@@ -22,11 +22,15 @@
         
     </head>
     <body>
+        <div class="container">
         <form name="shouru_every" action="<?php echo base_url() . 'index.php/data_add/zhuyuan_shouru_every_add' ?>" method="post" >
+            <div style="margin-top: 100px;margin-top: 100px">
             <table class="table">
                 <tr>
                     <td>日期：</td>
                     <td><input type="text" name="date"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             
 
@@ -53,6 +57,8 @@
                     <td></td>
                 </tr>
             </table>
+            </div>
         </form>
+        </div>
     </body>
 </html>

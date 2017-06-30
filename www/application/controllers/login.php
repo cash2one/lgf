@@ -58,28 +58,31 @@ class Login extends CI_Controller {
         $_SESSION['userid']=$_POST['userid']; 
         $username=$this->sys_manager_m->username_select($_SESSION['userid']);
         //var_dump($username);
-        foreach ($username as $key_username => $username_value) {
-            $username_v=$username_value->username;
+        if ($username != null) {
+            foreach ($username as $key_username => $username_value) {
+                $username_v = $username_value->username;
+            }
+
+            $_SESSION['username'] = $username_v;
         }
-        $_SESSION['username']=$username_v;
-        $company=$this->sys_manager_m->company_select($_SESSION['userid']);
+        $company = $this->sys_manager_m->company_select($_SESSION['userid']);
         foreach ($company as $key_company => $company_value) {
-            $company_v=$company_value->company;
+            $company_v = $company_value->company;
         }
-        $_SESSION['company']=$company_v;
-        $data['userid']=$_SESSION['userid'];
-        $this->form_validation->set_rules('userid','用户名','required|callback_username_check');
-        $this->form_validation->set_rules('password','密码','required|callback_password_check');
-        $this->form_validation->set_rules('captcha','验证码','required|callback_captcha_check');
-        $bool=$this->form_validation->run();
-        if($bool){
+        $_SESSION['company'] = $company_v;
+        $data['userid'] = $_SESSION['userid'];
+        $this->form_validation->set_rules('userid', '用户名', 'required|callback_username_check');
+        $this->form_validation->set_rules('password', '密码', 'required|callback_password_check');
+        $this->form_validation->set_rules('captcha', '验证码', 'required|callback_captcha_check');
+        $bool = $this->form_validation->run();
+        if ($bool) {
             //echo $s;
             //$this->load->view('main_v');
-            $this->load->view('main_v',$data);
+            $this->load->view('main_v', $data);
             //$this->load->view('head_v',$data);
             //$this->load->view('left_v');
             //$this->load->view('right_v');
-        }else{
+        } else {
             //$vals=array(
             //'img_path'=>'./captcha/',//此目录需要手工创建
             //'img_url'=>  base_url().'captcha/',

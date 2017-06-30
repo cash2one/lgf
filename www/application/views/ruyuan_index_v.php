@@ -14,7 +14,6 @@
 	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url().'js/dataone.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url().'js/lgf.js'?>"></script>
-        <script src="<?php echo base_url() . 'js/jquery.js' ?>"></script>
         <script type="text/javascript">
             
             function changjia_id_gen() {
@@ -47,17 +46,21 @@
         
     </head>
     <body id="userlogin_body">
+        <div class="container-fluid">
         <form name="ruyuan" action="<?php echo base_url() . 'index.php/data_add/ruyuan_add' ?>" method="post" >
-            <table>
-                <tr>
-                    <td>日期：</td>
-                    <td><input type="text" name="date"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/></td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">日期：</span>
+                        <input  class="form-control" type="text" name="date"  readOnly onClick="setDay(this);" value="<?php echo date('Y-m-d') ?>"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">提交</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->     
             
-            <input type="submit" size="17" name="submit" value="提交"/>
-            <!--<td><input type="reset" size="17" name="reset" value="重置"/></td>-->
-            
+            <div style="margin: 10px">
             <table class="table" id="tb">
                 <thead>
                     <tr>
@@ -152,8 +155,11 @@
                     
                 </tbody>
             </table>
+            
             <input type="button" name="del" value=" - " onClick="delrow();">
             <input type="button" name="add" value=" + " onClick="addrow_ruyuan('<?php echo $yiyuan?>');">
+            </div>
         </form>
+        </div>
     </body>
 </html>

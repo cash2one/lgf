@@ -19,13 +19,17 @@
     </head>
     <body id="userlogin_body">
         <form name="jiuzhen" action="<?php echo base_url() . 'index.php/patients/zhuyaun_patients_every_sel' ?>" method="post">
-            <table>
-                <tr>
-                    <td>日期：</td>
-                    <td><input type="text" name="date_every"  readOnly onClick="setDay(this);" value="<?php echo $date_every ?>"/></td>
-                    <td><input type="submit" name="submit" value="查询" /></td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">日期：</span>
+                        <input  class="form-control" type="text" name="date_every"  readOnly onClick="setDay(this);" value="<?php echo $date_every ?>"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">查询</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
         </form>
         <table class="table table-striped">
             <thead>
@@ -52,9 +56,11 @@
                     <td span>住院收入</td>
                     <td span><?php echo '0' ?></td>
                     <td span>退补款</td>
-                    <td span><?php echo $tuibukuan ?></td>
+                    <td span><?php echo '0' ?></td>
+                    $tuibukuan
                     <td span>医保收入</td>
-                    <td span><?php echo $yibaoshouru ?></td>
+                    <td span><?php echo '0 '?></td>
+                    $yibaoshouru
                 </tr>
                 <tr>
                     <td span>门诊</td>

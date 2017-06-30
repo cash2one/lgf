@@ -6,9 +6,11 @@
 
         <title>用户登录</title>
 
-        <link href="<?php echo base_url().'css/User_Login.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url().'css/User_Login1.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url().'css/bootstrap.min.css' ?>" type="text/css" rel="stylesheet" />
         
         <script type="text/javascript" src="<?php echo base_url().'js/jquery.js' ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/bootstrap.min.js' ?>"></script>
         <script type="text/javascript">
         function get_captcha() {
             $.get("<?php echo site_url('login/get_captcha');?>", function(data){
@@ -20,78 +22,61 @@
             //$('#reload-captcha').click(get_captcha);
         })
         </script>
-    </head><body id="userlogin_body">
-        <div></div>
-        <div id="user_login">
-            <dl>
-                <dd id="user_top">
-                    <ul>
-                        <li class="user_top_l"></li>
-                        <li class="user_top_c"></li>
-                        <li class="user_top_r"></li></ul>
-                </dd><dd id="user_main">
-                    <form action="/index.php/login/checklogin" method="post">
-                        <ul>
-                            <li class="user_main_l"></li>
-                            <li class="user_main_c">
-                                <div class="user_main_box">
-                                    
-                                    <ul>
-                                        <li class="user_main_text">用户ID： </li>
-                                        <li class="user_main_input">
-                                            <input class="TxtUserNameCssClass" id="userid" maxlength="20" name="userid" value="<?php echo set_value('userid') ?>"> </li>
-                                        
-                                    </ul>
-                                    <ul>
-                                        <li class=""><?php echo form_error('userid'); ?></li>
-                                    </ul>
-                                    <?php // echo '<script>alert(\''.form_error('userid').'\')</script>'; ?>
-                                    
-                                    <ul>
-                                        <li class="user_main_text">密&nbsp;&nbsp;&nbsp;&nbsp;码： </li>
-                                        <li class="user_main_input">
-                                            <input class="TxtPasswordCssClass" id="password" name="password" type="password">
-                                        </li>
-                                    </ul>
-                                    <ul>
-                                        <li class=""><?php echo form_error('password'); ?></li>
-                                    </ul>
-                                    <ul>
-                                        <li class="user_main_text">验证码： </li>
-                                        
-                                        <li class="user_main_input">
-                                            <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text">
-                                                
-                                                
-                                                <li id="captcha-image" onclick="get_captcha();"></li>
-                                                
-                                                
-                                                <!--
-                                                <img src="<?php echo base_url().'/img/admin.png' ?>"  alt="" />
-                                                -->
-                                        </li>
-                                        
-                                        
-                                    </ul>
-                                    <ul>
-                                        <li class=""><?php echo form_error('captcha'); ?></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            
-                            <li class="user_main_r">
-
-                                <input style="border: medium none; background: url(<?php echo base_url().'/img/user_botton.gif'?>) repeat-x scroll left top transparent; height: 122px; width: 111px; display: block; cursor: pointer;" value="" type="submit">
-                                    <a href="/index.php/sys_manager/user_add">注册</a>
-                            </li>
-                        </ul>
-                        
-                    </form>
-                </dd><dd id="user_bottom">
-                    <ul>
-                        <li class="user_bottom_l"></li>
-                        <li class="user_bottom_c"><span style="margin-top: 40px;"></span> </li>
-                        <li class="user_bottom_r"></li></ul></dd></dl></div><span id="ValrUserName" style="display: none; color: red;"></span><span id="ValrPassword" style="display: none; color: red;"></span><span id="ValrValidateCode" style="display: none; color: red;"></span>
-        <div id="ValidationSummary1" style="display: none; color: red;"></div>
+    </head>
+    <body id="">
+        <div class="container">
+            <div class="text-center" style="margin-top: 100px;margin-bottom: 50px">
+                <h1>系统登录</h1>
+            </div>
+            <div class="">
+                <form class="form-horizontal" action="/index.php/login/checklogin" method="post">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 col-md-offset-3 control-label">用户名</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="userid" maxlength="20" name="userid" value="<?php echo set_value('userid') ?>">
+                        </div>
+                        <div class="col-sm-3">
+                            <?php echo form_error('userid'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 col-md-offset-3 control-label">密码</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="password" name="password" type="password">
+                        </div>
+                        <div class="col-sm-3">
+                            <?php echo form_error('password'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-md-offset-3 control-label">验证码</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="captcha" name="captcha" type="text">
+                        </div>
+                        <div class="col-sm-1">
+                            <span id="captcha-image" onclick="get_captcha();"></span>
+                        </div>
+                        <div class="col-sm-3">
+                            <p><?php echo form_error('captcha'); ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 记住密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-10">
+                            <button type="submit" class="btn btn-primary">登录</button>
+                            <button type="reset" class="btn btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

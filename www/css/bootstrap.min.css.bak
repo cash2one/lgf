@@ -6,4 +6,4 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 
 
-/*修改了.table中padding：8px为3px*/
+/*@media (min-width:568px){.containerright{width:550px}}@media (min-width:792px){.containerright{width:770px}}@media (min-width:1000px){.containerright{width:970px}}*/

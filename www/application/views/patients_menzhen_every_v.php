@@ -18,23 +18,28 @@
 
     </head>
     <body id="userlogin_body">
+        <div class="container-fluid">
         <form name="jiuzhen" action="<?php echo base_url() . 'index.php/patients/menzhen_patients_every_sel' ?>" method="post">
-            <table>
-                <tr>
-                    <td>日期：</td>
-                    <td><input type="text" name="date_every"  readOnly onClick="setDay(this);" value="<?php echo $date_every ?>"/></td>
-                    <td><input type="submit" name="submit" value="查询" /></td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">日期：</span>
+                        <input  class="form-control" type="text" name="date_every"  readOnly onClick="setDay(this);" value="<?php echo $date_every ?>"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">查询</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
         </form>
-        <table class="table table-striped">
+        <table class="table table-striped" id="menzhentb">
             <thead>
                 <tr>
                     <td colspan="31" align="center">2016年荣昌仁爱医院门诊患者数据统计</td>
                 </tr>
             </thead>
             <tbody>
-                <tr align="center">
+                <tr align="">
                     <td colspan="2" align="center"><?php echo $date_every ?></td>
                     <td>总业绩</td>
                     <td><?php echo $zongyeji ?></td>
@@ -363,5 +368,6 @@
             </tbody>
 
         </table>
+        </div>
     </body>
 </html>

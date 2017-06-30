@@ -2,7 +2,11 @@
 <html>
     <head>
         <meta http-equiv=content-type content="text/html; charset=utf-8" />
-        <link href="<?php echo base_url().'css/admin.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url().'css/admin1.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url().'css/bootstrap.min.css' ?>" type="text/css" rel="stylesheet" />
+        
+        <script type="text/javascript" src="<?php echo base_url().'js/jquery.js' ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'js/bootstrap.min.js' ?>"></script>
     </head>
     <body>
 <div id="right" style="">

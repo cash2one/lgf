@@ -5,7 +5,7 @@
         <meta http-equiv=pragma content=no-cache />
         <meta http-equiv=cache-control content=no-cache />
         <meta http-equiv=expires content=-1000 />
-        <link href="<?php echo base_url().'css/admin.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url() . '/css/User_Login1.css' ?>" type="text/css" rel="stylesheet" />
         <link href="<?php echo base_url().'css/bootstrap.min.css'?>" rel="stylesheet" media="screen">
         <script type="text/javascript" src="<?php echo base_url().'js/jquery.js'?>"></script>
 	<script type="text/javascript" src="<?php echo base_url().'js/bootstrap.min.js'?>"></script>
@@ -17,8 +17,9 @@
         <title>入院录入</title>
     </head>
     <body id="chuyuan_index_sel_body">
+        <div class="container" >
         <form name="ruyuan" action="<?php echo base_url() . 'index.php/data_add/ruyuan_select' ?>" method="post" >
-            <div>
+            <div style="margin-top: 100px;margin-bottom: 100px">
                 <table class="table">
                     <tr>
                         <td>入院日期：</td>
@@ -45,5 +46,6 @@
             
             
         </form>
+            </div>
     </body>
 </html>
